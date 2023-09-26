@@ -1,0 +1,3 @@
+Algoritmo Tienda
+	
+FinAlgoritmo
