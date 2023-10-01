@@ -45,4 +45,3 @@ Algoritmo Programa_calculadora
 		Fin Segun
 	Hasta Que elección=1 o elección=2 o elección=3 o elección=4
 FinAlgoritmo
-
