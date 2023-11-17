@@ -11,11 +11,17 @@ public class sumar100 {
     if (numero < 0) {
       System.out.println("El número tiene que ser positivo.");
     } else {
-      for (int i = numero; i <= numero + 100; i++) {
-        resultado += i;
+      for(int i = numero; i < numero + 100; i++) {
+        resultado = i + 1;
       }
+      System.out.println(
+        "La suma de " +
+        numero +
+        " mas los 100 siguientes números es " +
+        resultado +
+        "."
+      );
     }
-    System.out.println("La suma de "+numero+" los 100 siguientes números");
     s.close();
   }
 }

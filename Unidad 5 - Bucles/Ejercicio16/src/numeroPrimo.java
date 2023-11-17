@@ -10,7 +10,7 @@ public class numeroPrimo {
     int numero = s.nextInt();
 
     for (int i = 1; i <= numero; i++) {
-      if (numero % i == 0) {
+      if ((numero % i) == 0) {
         esPrimo++;
       }
     }
