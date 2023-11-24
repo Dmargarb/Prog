@@ -8,7 +8,7 @@ public class factorialDeUnNumero {
     int numero; //Declarar variable
 
     do { //Bucle pidiendo el número entero positivo
-      System.out.print("Introduzca un número entero: "); 
+      System.out.print("Introduzca un número entero: ");
       numero = s.nextInt();
       if (numero < 0) {
         System.out.println("Tienes que introducir un numero entero positivo.");
