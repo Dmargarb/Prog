@@ -52,14 +52,14 @@ public class ticket {
       double iva = precioFinal - precioTotal;
 
       System.out.println("Factura");
-      System.out.println("--------------------------");
-      System.out.printf("%-10s %-10s  \n", "Artículo     ", linea3);
-      System.out.printf("%-10s %-8.2f \n", "Precio       ", precio);
-      System.out.printf("%-10s %-6d   \n", "Cantidad     ", cantidad);
-      System.out.printf("%-10s %-8.2f \n", "Total        ", precioTotal);
-      System.out.printf("%-10s %-8.2f \n", "IVA al 4%    ", iva);
-      System.out.println("--------------------------");
-      System.out.printf("%-10s %-8.2f \n", "Total con IVA", precioFinal);
+      System.out.println("-----------------------------");
+      System.out.printf("%-10s      %13s\n", "Artículo", linea3);
+      System.out.printf("%-10s      %6.2f/unidad\n", "Precio", precio);
+      System.out.printf("%-10s      %13d\n", "Cantidad", cantidad);
+      System.out.printf("%-10s      %12.2f€\n", "Total", precioTotal);
+      System.out.printf("%-10s      %12.2f€\n", "IVA al 4%", iva);
+      System.out.println("-----------------------------");
+      System.out.printf("%-10s      %9.2f€ \n", "Total con IVA", precioFinal);
     } else if ((producto == 1) && (alimento == 2)) {
       double precioTotal = precio * cantidad;
       double precioFinal = precioTotal * 1.04;

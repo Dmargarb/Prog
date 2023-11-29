@@ -5,7 +5,7 @@ Algoritmo árbol_navidad
         Para espacio<-1 Hasta n-i Con Paso 1 Hacer
             Escribir Sin Saltar "  "
         Fin Para
-        Para a<-1 Hasta 2i-1 Con Paso 1 Hacer
+        Para a<-1 Hasta 2*i-1 Con Paso 1 Hacer
             Escribir Sin Saltar " "
         Fin Para
         Escribir " "

@@ -9,7 +9,11 @@ public class fibonacci {
         System.out.println(" ");
 
         for (int i = 1; i <= numeroIntroducido; i++) {
-            System.out.print(primerNumero+" ");
+            if (i == numeroIntroducido) {
+                System.out.print(primerNumero+".");
+              } else {
+                System.out.print(primerNumero+", ");
+              }
             int resultado = primerNumero + segundoNumero;
             primerNumero = segundoNumero;
             segundoNumero = resultado;

@@ -26,5 +26,5 @@ Algoritmo Rombo
 	Definir altura Como Entero
 	Escribir "¿De cuántos pisos quieres el rombo?" Sin Saltar
 	Leer altura
-	Escribir Piramide
+	Escribir "Piramide"
 FinAlgoritmo

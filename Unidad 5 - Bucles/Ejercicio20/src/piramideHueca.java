@@ -16,12 +16,7 @@ public class piramideHueca {
         System.out.print("  ");
       }
       for (int caracter = 1; caracter <= 2 * fila - 1; caracter++) {
-        if (
-          fila == 1 ||
-          fila == altura ||
-          caracter == 1 ||
-          caracter == 2 * fila - 1
-        ) {
+        if (fila == 1 || fila == altura || caracter == 1 || caracter == 2 * fila - 1) {
           System.out.print(caracterIntroducido + " ");
         } else {
           System.out.print("  ");
