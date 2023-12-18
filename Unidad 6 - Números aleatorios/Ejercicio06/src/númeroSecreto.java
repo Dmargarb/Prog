@@ -17,7 +17,8 @@ public class númeroSecreto {
 
       if (numeroIntroducido == numeroSecreto) {
 
-        
+        System.out.println("¡Has acertado!");
+        acertado = true;
 
       } else if (numeroIntroducido < numeroSecreto) {
 

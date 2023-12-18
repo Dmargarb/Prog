@@ -1,34 +1,35 @@
 public class numero50 {
 
   public static void main(String[] args) throws Exception {
-    int numeroMaximo = 100;
-    int numeroMinimo = 199;
-    int numero;
+    int max = 199;
+    int min = 100;
+    int numeroGrande = 100;
+    int numeroPequeño = 199;
     int suma = 0;
 
     System.out.println("50 números enteros aleatorios entre 100 y 199 (ambos incluidos):");
     System.out.println();
 
     for (int i = 1; i <= 50; i++) {
-      numero = (int) (Math.random() * 100) + 100;
+      int numeroAleatorio = (int)(Math.random() * ((max - min) +1) + min);
       
       if (i == 50) {
-        System.out.print(numero + ".");
+        System.out.print(numeroAleatorio + ".");
       } else {
-        System.out.print(numero + ", ");
+        System.out.print(numeroAleatorio + ", ");
       }
 
-      if (numero > numeroMaximo) {
-        numeroMaximo = numero;
+      if (numeroAleatorio > numeroGrande) {
+        numeroGrande = numeroAleatorio;
       }
 
-      if (numero < numeroMinimo) {
-        numeroMinimo = numero;
+      if (numeroAleatorio < numeroPequeño) {
+        numeroPequeño = numeroAleatorio;
       }
       
-      suma += numero;
+      suma += numeroAleatorio;
     }
     System.out.println();
-    System.out.println("\nNúmero máximo: "+numeroMaximo+", número mínimo: "+numeroMinimo+", media de los números: "+suma/50+".");
+    System.out.println("\nNúmero máximo: "+numeroGrande+", número mínimo: "+numeroPequeño+", media de los números: "+suma/50+".");
   }
 }
