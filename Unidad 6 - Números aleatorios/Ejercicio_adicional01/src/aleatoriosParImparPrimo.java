@@ -25,13 +25,13 @@ public class aleatoriosParImparPrimo {
         esPrimo++;
       }
 
-      if (numeroAleatorio % 2 == 0 & esPar < 50) {
+      if ((numeroAleatorio % 2 == 0) && (esPar < 50)) {
         esPar++;
         System.out.print(numeroAleatorio + " ");
       } else if (esImpar < 50) {
         esImpar++;
         System.out.print(numeroAleatorio + " ");
-      } else if (esPar == 50 & esImpar == 50) {
+      } else if ((esPar == 50) && (esImpar == 50)) {
         completado = true;
       }
     } while (!completado);

@@ -1,12 +1,3 @@
-/**
- * Aprende Java con Ejercicios (https://leanpub.com/aprendejava)
- * 
- * Capítulo 5. Bucles.
- * 
- * Ejercicio 46
- * 
- * @author Luis José Sánchez
- */
 public class rectangulCconAsteriscos {
   public static void main(String[] args) {
 
