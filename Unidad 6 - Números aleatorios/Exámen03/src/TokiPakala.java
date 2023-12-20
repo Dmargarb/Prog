@@ -99,7 +99,7 @@ public class TokiPakala {
             }
           }
           if (i == frase - 1) {
-            System.out.print("."); // imprime el punto final
+            System.out.print(". "); // imprime el punto final
           } else {
             System.out.print(" "); // imprime espacio entre palabras
           }
