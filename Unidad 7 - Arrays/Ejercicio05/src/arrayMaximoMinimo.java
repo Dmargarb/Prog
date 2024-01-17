@@ -2,7 +2,6 @@ public class arrayMaximoMinimo {
 
   public static void main(String[] args) {
     int[] numeros = new int[10];
-    int orden = 1;
     int i = 0;
     int numeroMaximo = 0;
     int numeroMinimo = 0;
@@ -10,7 +9,7 @@ public class arrayMaximoMinimo {
     System.out.println("Introduce 10 números.\n");
 
     do {
-      System.out.print("Introduce el número " + orden + ": ");
+      System.out.print("Introduce el número " + (i+1) + ": ");
       numeros[i] = Integer.parseInt(System.console().readLine());
 
       if (i == 0) {
@@ -27,10 +26,9 @@ public class arrayMaximoMinimo {
       }
 
       i++;
-      orden++;
-    } while (!(orden > 10));
+    } while (!(i == 10));
 
-    System.out.println("\nLos números en orden son: ");
+    System.out.println("\nLos números introducidos son: ");
 
     for (i = 0; i < 10; i++) {
       System.out.print(numeros[i] + " ");
