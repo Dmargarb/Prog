@@ -8,11 +8,13 @@ public class arrayPalabras {
       String[] palabra = new String[8];
       String[] resultado = new String[8];
   
-      System.out.println("Introduzca 8 palabras (vaya pulsando [INTRO] entre una y otra.");
+      System.out.println("Introduzca 8 palabras. ");
       
       int j = 0;
       
       for (int i = 0; i < 8; i++) {
+
+        System.out.print("Palabra "+(i+1)+": ");
         palabra[i] = System.console().readLine();
   
         // Si la palabra introducida es un color, la guarda en el array resultado.

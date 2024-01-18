@@ -5,7 +5,7 @@ public class arrayRotado {
   
       // Genera el array
       for (int i = 0; i < 10; i++) {
-        n[i] = (int)(Math.random() * 381) + 20;
+        n[i] = (int)(Math.random() * 101);
       }
   
       // Muestra el array original.
@@ -41,7 +41,7 @@ public class arrayRotado {
         }
       } while (!existeNumero);
       
-      // Rota los el array hasta que el número introducido se coloque en la posición 0
+      // Rota los números del array hasta que el número introducido se coloque en la posición 0
       while (n[0] != numeroIntroducido) {
         int aux = n[9];
         // Rotación a la derecha

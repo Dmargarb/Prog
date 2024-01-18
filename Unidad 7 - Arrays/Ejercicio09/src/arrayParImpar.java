@@ -2,17 +2,15 @@ public class arrayParImpar {
 
   public static void main(String[] args) {
     int[] numeros = new int[8];
-    int orden = 1;
     int i = 0;
 
     System.out.println("Introduce 8 números enteros.");
 
     do {
-      System.out.print("Introduce el número " + orden + ": ");
+      System.out.print("Introduce el número " + (i+1) + ": ");
       numeros[i] = Integer.parseInt(System.console().readLine());
       i++;
-      orden++;
-    } while (!(orden > 8));
+    } while (!(i == 8));
 
     System.out.println();
 

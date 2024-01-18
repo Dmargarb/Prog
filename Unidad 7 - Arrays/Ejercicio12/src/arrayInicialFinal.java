@@ -9,9 +9,10 @@ public class arrayInicialFinal {
     int nFinal;
     boolean valido;
     
-    System.out.println("Introduzca 10 números separados por INTRO:");
+    System.out.println("Introduzca 10 números:");
 
     for (i = 0; i < 10; i++) {
+      System.out.print("Introduce el número "+(i+1)+": ");
       n[i] = Integer.parseInt(System.console().readLine());
     }
     

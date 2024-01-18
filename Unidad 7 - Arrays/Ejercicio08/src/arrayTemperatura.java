@@ -17,7 +17,8 @@ public class arrayTemperatura {
     };
 
     int[] temperatura = new int[12];
-    int i, j;
+    int i;
+    int j;
 
     String verde = "\033[32m";
     String naranja = "\033[33m";

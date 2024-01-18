@@ -1,7 +1,7 @@
 public class arrayConPrimos {
   public static void main(String[] args) {
   
-    int[] n = new int[10];
+    int[] numeros = new int[10];
     int[] primo = new int[10];
     int[] noPrimo = new int[10];
     int i;
@@ -10,15 +10,17 @@ public class arrayConPrimos {
     int noPrimos = 0;
     boolean esPrimo = false;
     
-    System.out.println("Introduzca 10 números separados por INTRO:");
+    System.out.println("Introduzca 10 números:");
 
     for (i = 0; i < 10; i++) {
-      n[i] = Integer.parseInt(System.console().readLine());
+
+      System.out.print("Introduce el número "+(i+1)+": ");
+      numeros[i] = Integer.parseInt(System.console().readLine());
       
       // Comprueba si el número es o no primo.
       esPrimo = true;
-      for (j = 2; j < n[i] - 1; j++) {
-        if (n[i] % j == 0) {
+      for (j = 2; j < numeros[i] - 1; j++) {
+        if (numeros[i] % j == 0) {
           esPrimo = false;
         }
       }
@@ -26,9 +28,9 @@ public class arrayConPrimos {
       // Si el número es primo, se mete en un array y si
       // no es primo, se mete en otro diferente.
       if (esPrimo) {
-        primo[primos++] = n[i];
+        primo[primos++] = numeros[i];
       } else {
-        noPrimo[noPrimos++] = n[i];
+        noPrimo[noPrimos++] = numeros[i];
       }
     }
     
@@ -42,19 +44,19 @@ public class arrayConPrimos {
     System.out.println("│\n├────────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤");
     System.out.print("│ Valor  ");
     for (i = 0; i < 10; i++) {
-      System.out.printf("│%4d ", n[i]);
+      System.out.printf("│%4d ", numeros[i]);
     }
     System.out.println("│\n└────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘");
     
     // Los números primos se menten en las primeras
     // posiciones del array original.
     for (i = 0; i < primos; i++) {
-      n[i] = primo[i];
+      numeros[i] = primo[i];
     }
     
     // Los números que no son primos se colocan al final.
     for (i = primos; i < primos + noPrimos; i++) {
-      n[i] = noPrimo[i - primos];
+      numeros[i] = noPrimo[i - primos];
     }
 
     // Muestra el resultado.
@@ -67,7 +69,7 @@ public class arrayConPrimos {
     System.out.println("│\n├────────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤");
     System.out.print("│ Valor  ");
     for (i = 0; i < 10; i++) {
-      System.out.printf("│%4d ", n[i]);
+      System.out.printf("│%4d ", numeros[i]);
     }
     System.out.println("│\n└────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘");
   }
