@@ -24,40 +24,72 @@ public class Graphy {
 
     System.out.print("Simple o en Color (escriba S o C): ");
     String elecion = System.console().readLine();
-
     elecion = elecion.toLowerCase(); // Se convierte en minúscula la elección
 
-    switch (elecion) {  // Según la elección se ejecuta una instrucción diferente
+    int[] digitos = dividirDigitoFuncion(numeroIntroducido);
+    int digitoMax = numeroMayor(digitos);
+    int longitud = longitudFuncion(numeroIntroducido);
+
+    switch (elecion) { // Según la elección se ejecuta una instrucción diferente
       case "s":
-        long numero = numeroIntroducido;
-        int longitud = 0;
-        long numeroMayor = 0;
+        for (int i = 0; i < digitos.length; i++) {
+          System.out.println(" --- ");
+          System.out.println("| " + digitos[i] + " |");
 
-        while (numero != 0) { // Se obtiene la longitud del número
-          numero = numero / 10;
-          longitud++;
-        }
-
-        for (int i = longitud - 1; i >= 0; i--) { // Se divide el número para obtener los dígitos
-          long digito = numeroIntroducido / (int) Math.pow(10, i);
-
-          System.out.printf("%4s\n", "---");
-          System.out.printf("| %d |\n", digito);
-          System.out.printf("%4s\n", "---");
-
-          if (numeroMayor < digito) { // Se obtiene el dígito mayor
-            numeroMayor = digito;
+          if (i == longitud - 1) {
+            System.out.println(" --- ");
           }
+          for (int j = 0; j < digitoMax + 1; j++) {
+            System.out.print(" --- ");
+            System.out.print("|   |");
 
-          numeroIntroducido = numeroIntroducido % (int) Math.pow(10, i); // Se repite el proceso
+            if (i == longitud - 1) {
+              System.out.print(" --- ");
+            }
+          }
+          System.out.println("");
         }
         break;
       case "c":
-        
         break;
       default:
         System.out.println("No entendí tu elección");
     }
     s.close();
+  }
+
+  public static int[] dividirDigitoFuncion(long numeroIntroducido) { // Se divide el número para obtener los dígitos
+    int longitud = longitudFuncion(numeroIntroducido);
+    int[] digitos = new int[longitud];
+    int j = 0;
+
+    for (int i = longitud - 1; i >= 0; i--) {
+      long digito = numeroIntroducido / (int) Math.pow(10, i);
+      digitos[j] = (int) digito;
+      j++;
+      numeroIntroducido = numeroIntroducido % (int) Math.pow(10, i);
+    }
+    return digitos;
+  }
+
+  public static int longitudFuncion(long numero) { // Se obtiene la longitud del número
+    int longitud = 0;
+
+    while (numero != 0) {
+      numero = numero / 10;
+      longitud++;
+    }
+    return longitud;
+  }
+
+  public static int numeroMayor(int[] digitos) {
+    int numeroMax = 0;
+
+    for (int i = 0; i < digitos.length; i++) {
+      if (numeroMax < digitos[i]) {
+        numeroMax = digitos[i];
+      }
+    }
+    return numeroMax;
   }
 }
