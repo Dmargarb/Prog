@@ -1,20 +1,20 @@
 package arrays2d;
 
 /**
-* 
-*
-* @author David Martín García
-*/
+ *
+ *
+ * @author David Martín García
+ */
 
 /**
-* Devuelve un número entero
-* escogido al azar entre todos los disponibles.
-*
-*
-* @param array2D un array bidimensional
-* @return <code>numero</code> el número aleatorio
-* @return <code>-1</code> si el array está vacío
-*/
+ * Devuelve un número entero
+ * escogido al azar entre todos los disponibles.
+ *
+ *
+ * @param array2D un array bidimensional
+ * @return <code>numero</code> el número aleatorio
+ * @return <code>-1</code> si el array está vacío
+ */
 
 public class Elementos {
 
