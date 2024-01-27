@@ -14,7 +14,7 @@ public class Graphy {
     long numeroIntroducido = 0;
 
     do {
-      System.out.print("Introduzca un número: ");
+      System.out.print("Introduzca un número mayor que 0: ");
       numeroIntroducido = s.nextLong(); // Se introduce el número
 
       if (numeroIntroducido <= 0) { // Se comprueba que el número sea mayor a 0
@@ -28,29 +28,41 @@ public class Graphy {
 
     int[] digitos = dividirDigitoFuncion(numeroIntroducido);
     int digitoMax = numeroMayor(digitos);
-    int longitud = longitudFuncion(numeroIntroducido);
 
     switch (elecion) { // Según la elección se ejecuta una instrucción diferente
       case "s":
         for (int i = 0; i < digitos.length; i++) {
-          System.out.println(" --- ");
-          System.out.println("| " + digitos[i] + " |");
-
-          if (i == longitud - 1) {
-            System.out.println(" --- ");
+          // Dibujar la línea superior
+          for (int j = 0; j <= digitoMax; j++) {
+            System.out.print(" ---");
           }
-          for (int j = 0; j < digitoMax + 1; j++) {
-            System.out.print(" --- ");
-            System.out.print("|   |");
+          System.out.println();
 
-            if (i == longitud - 1) {
-              System.out.print(" --- ");
+          // Dibujar las celdas y las líneas verticales
+          for (int j = 0; j <= digitoMax; j++) {
+            if (j == 0) {
+              // Mostrar el número en la primera celda
+              System.out.printf("| %d ", digitos[i]);
+            } else if (j <= digitos[i]) {
+              // Rellenar las celdas a la derecha de la primera con asteriscos
+              System.out.print("| * ");
+            } else {
+              // Rellenar el resto de las celdas con espacios
+              System.out.print("|   ");
             }
           }
-          System.out.println("");
+          // Añadir la línea vertical final
+          System.out.println("|");
+
+          // Dibujar la línea inferior de la celda
+          for (int j = 0; j <= digitoMax; j++) {
+            System.out.print(" ---");
+          }
+          System.out.println();
         }
         break;
       case "c":
+        System.out.println("No se ha implementado la opción 'Color' aún.");
         break;
       default:
         System.out.println("No entendí tu elección");
@@ -58,18 +70,23 @@ public class Graphy {
     s.close();
   }
 
-  public static int[] dividirDigitoFuncion(long numeroIntroducido) { // Se divide el número para obtener los dígitos
+  public static int[] dividirDigitoFuncion(long numeroIntroducido) {
     int longitud = longitudFuncion(numeroIntroducido);
     int[] digitos = new int[longitud];
     int j = 0;
 
-    for (int i = longitud - 1; i >= 0; i--) {
-      long digito = numeroIntroducido / (int) Math.pow(10, i);
-      digitos[j] = (int) digito;
+    while (numeroIntroducido > 0) {
+      digitos[j] = (int) (numeroIntroducido % 10);
       j++;
-      numeroIntroducido = numeroIntroducido % (int) Math.pow(10, i);
+      numeroIntroducido /= 10;
     }
-    return digitos;
+
+    // Invertir el array antes de devolverlo
+    int[] resultado = new int[digitos.length];
+    for (int i = 0; i < digitos.length; i++) {
+      resultado[i] = digitos[digitos.length - i - 1];
+    }
+    return resultado;
   }
 
   public static int longitudFuncion(long numero) { // Se obtiene la longitud del número
