@@ -18,7 +18,7 @@ public class ArrayDeAlumnosPrincipal {
         String nombreIntroducido;
         double notaIntroducida;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < alum.length; i++) {
 
             alum[i] = new Alumno();
 
