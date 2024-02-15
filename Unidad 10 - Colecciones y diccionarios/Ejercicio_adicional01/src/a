@@ -1,0 +1,128 @@
+import java.util.*;
+
+// Clase CPIFP
+class CPIFP {
+    private String nombre;
+    private String direccion;
+    private String telefono;
+    private List<Estudiante> estudiantes;
+    private List<Departamento> departamentos;
+
+    // Constructor
+    public CPIFP(String nombre, String direccion, String telefono) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.estudiantes = new ArrayList<>();
+        this.departamentos = new ArrayList<>();
+    }
+
+    // Métodos para añadir y quitar estudiantes
+    public void agregarEstudiante(Estudiante estudiante) {
+        estudiantes.add(estudiante);
+    }
+
+    public void eliminarEstudiante(Estudiante estudiante) {
+        estudiantes.remove(estudiante);
+    }
+
+    // Métodos para añadir y quitar departamentos
+    public void agregarDepartamento(Departamento departamento) {
+        departamentos.add(departamento);
+    }
+
+    public void eliminarDepartamento(Departamento departamento) {
+        departamentos.remove(departamento);
+    }
+
+    // Otros métodos para obtener información de estudiantes y departamentos
+}
+
+// Clase Estudiante
+class Estudiante {
+    private String nombre;
+    private int identificador;
+    private CPIFP cpifp;
+    private List<Modulo> modulos;
+
+    // Constructor
+    public Estudiante(String nombre, int identificador, CPIFP cpifp) {
+        this.nombre = nombre;
+        this.identificador = identificador;
+        this.cpifp = cpifp;
+        this.modulos = new ArrayList<>();
+    }
+
+    // Métodos para añadir y quitar módulos
+    public void agregarModulo(Modulo modulo) {
+        modulos.add(modulo);
+    }
+
+    public void eliminarModulo(Modulo modulo) {
+        modulos.remove(modulo);
+    }
+
+    // Otros métodos para obtener información del estudiante
+}
+
+// Clase Departamento
+class Departamento {
+    private String nombre;
+    private List<Profesor> profesores;
+    private Profesor jefeDepartamento;
+    private CPIFP cpifp;
+
+    // Constructor
+    public Departamento(String nombre, CPIFP cpifp) {
+        this.nombre = nombre;
+        this.cpifp = cpifp;
+        this.profesores = new ArrayList<>();
+    }
+
+    // Métodos para añadir y quitar profesores
+    public void agregarProfesor(Profesor profesor) {
+        profesores.add(profesor);
+    }
+
+    public void eliminarProfesor(Profesor profesor) {
+        profesores.remove(profesor);
+    }
+
+    // Otros métodos para obtener información del departamento
+}
+
+// Clase Profesor
+class Profesor {
+    private String nombre;
+    private String especialidad;
+    private Departamento departamento;
+
+    // Constructor
+    public Profesor(String nombre, String especialidad, Departamento departamento) {
+        this.nombre = nombre;
+        this.especialidad = especialidad;
+        this.departamento = departamento;
+    }
+
+    // Otros métodos para obtener información del profesor
+}
+
+// Clase Módulo
+class Modulo {
+    private String nombre;
+    private int identificador;
+    private Departamento departamento;
+    private List<Estudiante> estudiantes;
+    private List<Profesor> profesores;
+
+    // Constructor
+    public Modulo(String nombre, int identificador, Departamento departamento) {
+        this.nombre = nombre;
+        this.identificador = identificador;
+        this.departamento = departamento;
+        this.estudiantes = new ArrayList<>();
+        this.profesores = new ArrayList<>();
+    }
+
+    // Otros métodos para obtener información del módulo
+}
