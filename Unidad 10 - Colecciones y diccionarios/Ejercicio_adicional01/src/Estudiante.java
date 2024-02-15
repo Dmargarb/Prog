@@ -1,15 +1,12 @@
-
-
 import java.util.ArrayList;
-import java.util.List;
 
 class Estudiante {
+
     private String nombre;
     private int identificador;
     private CPIFP cpifp;
-    private List<Modulo> modulos;
+    private ArrayList<Modulo> modulos;
 
-    // Constructor
     public Estudiante(String nombre, int identificador, CPIFP cpifp) {
         this.nombre = nombre;
         this.identificador = identificador;
@@ -17,14 +14,19 @@ class Estudiante {
         this.modulos = new ArrayList<>();
     }
 
-    // Métodos para añadir y quitar módulos
-    public void agregarModulo(Modulo modulo) {
-        modulos.add(modulo);
+    public String getNombre() {
+        return nombre;
     }
 
-    public void eliminarModulo(Modulo modulo) {
-        modulos.remove(modulo);
+    public int getIdentificador() {
+        return identificador;
     }
 
-    // Otros métodos para obtener información del estudiante
+    public CPIFP getCpifp() {
+        return cpifp;
+    }
+
+    public ArrayList<Modulo> getModulos() {
+        return modulos;
+    }
 }

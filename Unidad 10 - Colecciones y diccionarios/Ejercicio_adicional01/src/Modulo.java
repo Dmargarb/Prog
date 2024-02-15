@@ -1,16 +1,12 @@
-// Clase Módulo
-
 import java.util.ArrayList;
-import java.util.List;
 
 class Modulo {
     private String nombre;
     private int identificador;
     private Departamento departamento;
-    private List<Estudiante> estudiantes;
-    private List<Profesor> profesores;
+    private ArrayList<Estudiante> estudiantes;
+    private ArrayList<Profesor> profesores;
 
-    // Constructor
     public Modulo(String nombre, int identificador, Departamento departamento) {
         this.nombre = nombre;
         this.identificador = identificador;
@@ -19,5 +15,23 @@ class Modulo {
         this.profesores = new ArrayList<>();
     }
 
-    // Otros métodos para obtener información del módulo
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public ArrayList<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public ArrayList<Profesor> getProfesores() {
+        return profesores;
+    }
 }

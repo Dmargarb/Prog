@@ -1,29 +1,34 @@
-// Clase Departamento
-
 import java.util.ArrayList;
-import java.util.List;
 
 class Departamento {
-    private String nombre;
-    private List<Profesor> profesores;
-    private Profesor jefeDepartamento;
-    private CPIFP cpifp;
 
-    // Constructor
-    public Departamento(String nombre, CPIFP cpifp) {
+    private String nombre;
+    private ArrayList<Profesor> profesores;
+    private Profesor jefeDepartamento;
+
+    public Departamento(String nombre, Profesor jefeDepartamento) {
         this.nombre = nombre;
-        this.cpifp = cpifp;
+        this.jefeDepartamento = jefeDepartamento;
         this.profesores = new ArrayList<>();
     }
 
-    // Métodos para añadir y quitar profesores
-    public void agregarProfesor(Profesor profesor) {
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public ArrayList<Profesor> getProfesores() {
+        return profesores;
+    }
+
+    public Profesor getJefeDepartamento() {
+        return jefeDepartamento;
+    }
+
+    public void addProfesor(Profesor profesor) {
         profesores.add(profesor);
     }
 
-    public void eliminarProfesor(Profesor profesor) {
+    public void removeProfesor(Profesor profesor) {
         profesores.remove(profesor);
     }
-
-    // Otros métodos para obtener información del departamento
 }
