@@ -1,59 +1,130 @@
 public class PruebaCPIFP {
     public static void main(String[] args) {
-        // Crear un CPIFP
-        CPIFP cpifp = new CPIFP("CPIFP Ejemplo", "Dirección Ejemplo", 123456789);
 
-        // Crear un Departamento
-        Departamento departamento = new Departamento("Departamento Informática", new Profesor("Jefe de Departamento", "Informática", null));
+        // CPIFP
+        CPIFP cpifp = new CPIFP("CPIFP Alan Turing", "Calle ejemplo, 02", 123456789);
 
-        // Añadir el Departamento al CPIFP
-        cpifp.addDepartamento(departamento);
+        // Departamento
+        Departamento departamento1 = new Departamento(cpifp, null, "Departamento1");
+        Departamento departamento2 = new Departamento(cpifp, null, "Departamento2");
+        Departamento departamento3 = new Departamento(cpifp, null, "Departamento3");
 
-        // Crear un Profesor
-        Profesor profesor1 = new Profesor("Profesor 1", "Matemáticas", departamento);
-        Profesor profesor2 = new Profesor("Profesor 2", "Informática", departamento);
+        // Estudiantes
+        Estudiante estudiante1 = new Estudiante("Estudiante1", 1, cpifp);
+        Estudiante estudiante2 = new Estudiante("Estudiante2", 2, cpifp);
+        Estudiante estudiante3 = new Estudiante("Estudiante3", 3, cpifp);
 
-        // Añadir Profesores al Departamento
-        departamento.addProfesor(profesor1);
-        departamento.addProfesor(profesor2);
+        // Profesores
+        Profesor jefeDepartamento = new Profesor("Profesor1", "Informática", departamento1);
+        Profesor profesor2 = new Profesor("Profesor2", "Informática", departamento1);
+        Profesor profesor3 = new Profesor("Profesor3", "Informática", departamento2);
+        Profesor profesor4 = new Profesor("Profesor4", "Informática", departamento3);
 
-        // Crear un Estudiante
-        Estudiante estudiante = new Estudiante("Estudiante 1", 1, cpifp);
+        // Agregar el departamento al CPIFP
+        cpifp.addDepartamento(departamento1);
+        cpifp.addDepartamento(departamento2);
+        cpifp.addDepartamento(departamento3);
 
-        // Crear un Módulo
-        Modulo modulo = new Modulo("Programación", 1, departamento);
+        // Agregar profesores al departamento
+        departamento1.addProfesor(jefeDepartamento);
+        departamento1.addProfesor(profesor2);
+        departamento2.addProfesor(profesor3);
+        departamento3.addProfesor(profesor4);
 
-        // Añadir Estudiante al Módulo
-        modulo.getEstudiantes().add(estudiante);
+        // Agregar el jefe del departamento
+        departamento1.setJefeDepartamento(jefeDepartamento);
 
-        // Mostrar información
-        System.out.println("Información del CPIFP:");
-        System.out.println("Nombre del CPIFP: " + cpifp.getNombre());
-        System.out.println("Dirección del CPIFP: " + cpifp.getDireccion());
-        System.out.println("Teléfono del CPIFP: " + cpifp.getTelefono());
-        System.out.println("Departamentos del CPIFP: " + cpifp.getDepartamentos());
+        // Agregar estudiantes al CPIFP
+        cpifp.addEstudiante(estudiante1);
+        cpifp.addEstudiante(estudiante2);
+        cpifp.addEstudiante(estudiante3);
 
-        System.out.println("\nInformación del Departamento:");
-        System.out.println("Nombre del Departamento: " + departamento.getNombre());
-        System.out.println("Profesores del Departamento: " + departamento.getProfesores());
-        System.out.println("Jefe del Departamento: " + departamento.getJefeDepartamento());
+        // Obtener estudiantes
+        System.out.println("Estudiantes del CPIFP:");
+        for (Estudiante estudiante : cpifp.getEstudiantes()) {
+            System.out.println(estudiante.getNombre());
+        }
 
-        System.out.println("\nInformación del Profesor:");
-        System.out.println("Nombre del Profesor: " + profesor1.getNombre());
-        System.out.println("Especialidad del Profesor: " + profesor1.getEspecialidad());
-        System.out.println("Departamento del Profesor: " + profesor1.getDepartamento());
+        // Obtener departamentos
+        System.out.println("\nDepartamentos del CPIFP:");
+        for (Departamento depto : cpifp.getDepartamentos()) {
+            System.out.println(depto.getNombre());
+        }
 
-        System.out.println("\nInformación del Estudiante:");
-        System.out.println("Nombre del Estudiante: " + estudiante.getNombre());
-        System.out.println("Identificador del Estudiante: " + estudiante.getIdentificador());
-        System.out.println("CPIFP del Estudiante: " + estudiante.getCpifp());
-        System.out.println("Módulos del Estudiante: " + estudiante.getModulos());
+        // Obtener profesores
+        System.out.println("\nProfesores del Departamento1:");
+        for (Profesor profesor : departamento1.getProfesores()) {
+            System.out.println(profesor.getNombre());
+        }
 
-        System.out.println("\nInformación del Módulo:");
-        System.out.println("Nombre del Módulo: " + modulo.getNombre());
-        System.out.println("Identificador del Módulo: " + modulo.getIdentificador());
-        System.out.println("Departamento del Módulo: " + modulo.getDepartamento());
-        System.out.println("Estudiantes del Módulo: " + modulo.getEstudiantes());
-        System.out.println("Profesores del Módulo: " + modulo.getProfesores());
+        // Quitar un departamento del CPIFP
+        cpifp.quitarDepartamento(departamento3);
+
+        // Quitar un estudiante del CPIFP
+        cpifp.quitarEstudiante(estudiante3);
+
+        // Obtener departamentos después de haber eliminado uno
+        System.out.println("\nEliminamos Departamento3");
+        System.out.println("\nDepartamentos del CPIFP:");
+        for (Departamento depto : cpifp.getDepartamentos()) {
+            System.out.println(depto.getNombre());
+        }
+
+        // Obtener estudiantes después de haber eliminado uno
+        System.out.println("\nEliminamos Estudiante3");
+        System.out.println("\nEstudiantes del CPIFP:");
+        for (Estudiante estudiante : cpifp.getEstudiantes()) {
+            System.out.println(estudiante.getNombre());
+        }
+
+        // Verificar si un profesor está en el departamento
+        System.out.print("\n¿Profesor2 está en el departamento1? " + departamento1.verificarProfesor(profesor2));
+
+        // Quitar un profesor del departamento
+        System.out.println("\n\nEliminamos Profesor2");
+        departamento1.quitarProfesor(profesor2);
+
+        // Verificar si un profesor está en el departamento
+        System.out.print("\n¿Profesor2 está en el departamento1? " + departamento1.verificarProfesor(profesor2));
+
+        // Obtener datos de un estudiante por su nombre
+        String estudianteBuscar = "Estudiante1";
+        Estudiante nombreDelEstudiante = cpifp.getEstudiante(estudianteBuscar);
+
+        if (nombreDelEstudiante != null) {
+            System.out.println("\n\nDatos del estudiante " + estudianteBuscar + ":");
+            System.out.println("\nNombre: " + nombreDelEstudiante.getNombre());
+            System.out.println("Identificador: " + nombreDelEstudiante.getIdentificador());
+            System.out.println("CPIFP: " + nombreDelEstudiante.getCpifp().getNombreCpifp());
+        } else {
+            System.out.println("\n\nNo se encontró ningún estudiante con ese nombre.");
+        }
+
+        // Obtener datos de un departamento por su nombre
+        String departamentoBuscar = "Departamento1";
+        Departamento nombreDeldepartamento = cpifp.getDepartamento(departamentoBuscar);
+
+        if (nombreDeldepartamento != null) {
+            System.out.println("\nDatos del departamento " + departamentoBuscar + ":");
+            System.out.println("\nNombre: " + nombreDeldepartamento.getNombre());
+            System.out.println("CPIFP: " + nombreDeldepartamento.getCentro().getNombreCpifp());
+            System.out.println("Jefe: " + nombreDeldepartamento.getJefeDepartamento().getNombre());
+        } else {
+            System.out.println("\nNo se encontró ningún departamento con ese nombre.");
+        }
+
+        // Obtener datos de un departamento por su nombre
+        String profesorBuscar = "Profesor1";
+        Profesor nombreDelprofesor = departamento1.getProfesor(profesorBuscar);
+
+        if (nombreDelprofesor != null) {
+            System.out.println("\nDatos del profesor " + profesorBuscar + ":");
+            System.out.println("\nNombre: " + nombreDelprofesor.getNombre());
+            System.out.println("Especialidad: " + nombreDelprofesor.getEspecialidad());
+            System.out.println("Departamento: " + nombreDelprofesor.getDepartamento().getNombre());
+        } else {
+            System.out.println("\nNo se encontró ningún profesor con ese nombre.");
+        }
+
     }
 }
