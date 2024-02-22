@@ -8,7 +8,6 @@ import java.util.Map;
  */
 
 public class ExtraerTodasLasEntrada {
-    @SuppressWarnings("rawtypes")
     public static void main(String[] args) {
 
         HashMap<Integer, String> m = new HashMap<Integer, String>();
@@ -24,7 +23,7 @@ public class ExtraerTodasLasEntrada {
         System.out.println(m.entrySet());
 
         System.out.println("\nEntradas del diccionario extraídas una a una:");
-        for (Map.Entry pareja : m.entrySet()) {
+        for (Map.Entry <Integer, String> pareja : m.entrySet()) {
             System.out.println(pareja);
         }
 

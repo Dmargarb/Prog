@@ -8,7 +8,6 @@ import java.util.Map;
  */
 
 public class ExtraerEntradaDeterminada {
-    @SuppressWarnings("rawtypes")
     public static void main(String[] args) {
 
         HashMap<Integer, String> m = new HashMap<Integer, String>();
@@ -22,7 +21,7 @@ public class ExtraerEntradaDeterminada {
 
         System.out.println("Código\tNombre\n------\t-------------");
 
-        for (Map.Entry pareja : m.entrySet()) {
+        for (Map.Entry <Integer, String> pareja : m.entrySet()) {
             System.out.print(pareja.getKey() + "\t");
             System.out.println(pareja.getValue());
         }
