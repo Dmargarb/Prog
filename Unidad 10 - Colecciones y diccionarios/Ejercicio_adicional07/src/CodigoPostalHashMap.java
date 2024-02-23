@@ -16,13 +16,13 @@ public class CodigoPostalHashMap {
     public void addCodigoPostalCiudad(String ciudad, Integer codigoPostal) {
 
         // Obtener la lista de códigos postales asociados a la ciudad
-        ArrayList<Integer> listaCodigoPostal = codigoPostalCiudad.get(ciudad);
+        ArrayList<Integer> listaCodigoPostal = codigoPostalCiudad.get(ciudad.toLowerCase());
 
         // Si la lista es nula, significa que la ciudad no tiene códigos postales asociados,
         // por lo que se crea una nueva lista y se añade al HashMap
         if (listaCodigoPostal == null) {
             listaCodigoPostal = new ArrayList<Integer>();
-            codigoPostalCiudad.put(ciudad, listaCodigoPostal);
+            codigoPostalCiudad.put(ciudad.toLowerCase(), listaCodigoPostal);
         }
 
         // Añadir el código postal a la lista
@@ -31,14 +31,25 @@ public class CodigoPostalHashMap {
 
     // Método para eliminar una ciudad y todos sus códigos postales asociados
     public void removeCiudad(String ciudad) {
-        codigoPostalCiudad.remove(ciudad);
+
+        // Verificar si la ciudad existe en el mapa
+        if (codigoPostalCiudad.containsKey(ciudad.toLowerCase())) {
+
+            // Si la ciudad existe, eliminarla del mapa
+            codigoPostalCiudad.remove(ciudad.toLowerCase());
+
+        } else {
+            // Si la ciudad no existe, imprimir un mensaje de advertencia
+            System.out.println("La ciudad '" + ciudad + "' no existe en el HashMap de códigos postales.");
+        }
     }
+    
 
     // Método para eliminar un código postal específico de una ciudad
     public void removeCodigoPostal(String ciudad, Integer codigoPostal) {
 
         // Obtener la lista de códigos postales asociados a la ciudad
-        ArrayList<Integer> listaCodigoPostal = codigoPostalCiudad.get(ciudad);
+        ArrayList<Integer> listaCodigoPostal = codigoPostalCiudad.get(ciudad.toLowerCase());
 
         // Si la lista no es nula, significa que la ciudad tiene códigos postales asociados
         if (listaCodigoPostal != null) {
@@ -48,8 +59,12 @@ public class CodigoPostalHashMap {
 
             // Si la lista queda vacía después de eliminar el código postal, se elimina la ciudad del HashMap
             if (listaCodigoPostal.isEmpty()) {
-                codigoPostalCiudad.remove(ciudad);
+                codigoPostalCiudad.remove(ciudad.toLowerCase());
             }
+
+        } else {
+            // Si la ciudad no existe, imprimir un mensaje de advertencia
+            System.out.println("La ciudad '" + ciudad + "' no existe en el HashMap de códigos postales.");
         }
     }
 
@@ -64,11 +79,13 @@ public class CodigoPostalHashMap {
     public ArrayList<Integer> obtenerCodigosPostales(String ciudad) {
 
         // Obtener la lista de códigos postales asociados a la ciudad
-        ArrayList<Integer> codigosPostales = codigoPostalCiudad.get(ciudad);
+        ArrayList<Integer> codigosPostales = codigoPostalCiudad.get(ciudad.toLowerCase());
 
         // Si la lista es nula, significa que la ciudad no tiene códigos postales asociados,
         // por lo que se devuelve una lista vacía
         if (codigosPostales == null) {
+
+            System.out.println("La ciudad '" + ciudad + "' no contiene códigos postales en el HashMap.");
             return new ArrayList<>();
 
         } else {
@@ -81,13 +98,17 @@ public class CodigoPostalHashMap {
     public void ordenarCodigosPostales(String ciudad) {
 
         // Obtener la lista de códigos postales asociados a la ciudad
-        ArrayList<Integer> listaCodigoPostal = codigoPostalCiudad.get(ciudad);
+        ArrayList<Integer> listaCodigoPostal = codigoPostalCiudad.get(ciudad.toLowerCase());
 
         // Si la lista no es nula, significa que la ciudad tiene códigos postales asociados
         if (listaCodigoPostal != null) {
 
             // Ordenar la lista de códigos postales
             Collections.sort(listaCodigoPostal);
+
+        } else {
+            // Si la ciudad no existe, imprimir un mensaje de advertencia
+            System.out.println("La ciudad '" + ciudad + "' no existe en el HashMap de códigos postales.");
         }
     }
 
