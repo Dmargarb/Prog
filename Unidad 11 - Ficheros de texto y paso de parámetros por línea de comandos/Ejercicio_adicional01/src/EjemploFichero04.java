@@ -10,7 +10,7 @@ import java.io.File;
 class EjemploFichero04 {
   public static void main(String[] args) {
 
-    File f = new File("."); // se indica la ruta entre comillas
+    File f = new File("C:\\Users\\Luma\\Documents\\Grado\\Entornos de desarrollo\\Prog\\lib"); // se indica la ruta entre comillas
     // el punto (.) es el directorio actual
 
     String[] listaArchivos = f.list();

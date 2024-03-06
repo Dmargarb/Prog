@@ -15,7 +15,7 @@ class EjemploFichero08 {
     String nombreFichero = System.console().readLine();
 
     try {
-      BufferedReader br = new BufferedReader(new FileReader(nombreFichero));
+      BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Luma\\Documents\\Grado\\Entornos de desarrollo\\Prog\\lib\\"+nombreFichero));
 
       String linea = "0";
       int i = 0;

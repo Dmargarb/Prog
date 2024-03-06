@@ -14,7 +14,7 @@ class EjemploFichero01 {
   public static void main(String[] args) {
 
     try {
-      BufferedReader br = new BufferedReader(new FileReader("malaga.txt"));
+      BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Luma\\Documents\\Grado\\Entornos de desarrollo\\Prog\\lib\\malaga.txt"));
 
       String linea = "";
 

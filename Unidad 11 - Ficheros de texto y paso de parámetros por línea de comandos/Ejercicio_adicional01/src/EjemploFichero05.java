@@ -13,7 +13,7 @@ class EjemploFichero05 {
     System.out.print("Introduzca el nombre del archivo que desea borrar: ");
     String nombreFichero = System.console().readLine();
 
-    File fichero = new File(nombreFichero);
+    File fichero = new File("C:\\Users\\Luma\\Documents\\Grado\\Entornos de desarrollo\\Prog\\lib\\"+nombreFichero);
 
     if (fichero.exists()) {
       fichero.delete();

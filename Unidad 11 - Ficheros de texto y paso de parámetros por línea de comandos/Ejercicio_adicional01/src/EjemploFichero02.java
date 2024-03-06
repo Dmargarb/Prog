@@ -13,7 +13,7 @@ class EjemploFichero02 {
   public static void main(String[] args) {
 
     try {
-      BufferedWriter bw = new BufferedWriter(new FileWriter("fruta.txt"));
+      BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Luma\\Documents\\Grado\\Entornos de desarrollo\\Prog\\lib\\fruta.txt"));
 
       bw.write("naranja\n");
       bw.write("mango\n");

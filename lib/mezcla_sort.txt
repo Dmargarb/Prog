@@ -1,0 +1,21 @@
++
++
+,
+1
+Júpiter
+La Tierra
+Marte
+Mercurio
+Neptuno
+Plutón
+Saturno
+Urano
+Venus
+amarillo
+azul
+blanco
+hola
+naranja
+rojo
+verde
+z
