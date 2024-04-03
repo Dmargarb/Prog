@@ -5,17 +5,26 @@ import personal.Usuario;
 import personal.Usuarios;
 
 public class Authenticator {
-    public static String obtenerNombreDeArchivo(String[] args){
-        // TODO Comprueba que viene el argumento y devuelve el nombre del archivo en caso correcto
-        return "";
-    }
-    public static void main(String[] args){
-        String file;
-        if( (file = obtenerNombreDeArchivo(args)).equals("")){
-            // TODO Indica un mensaje de error y sal del programa con System.exit(-1)
+
+    public static String obtenerNombreDeArchivo(String[] args) {
+        // Comprueba que viene el argumento y devuelve el nombre del archivo en caso correcto
+        if (args.length == 1) {
+            return args[0];
+        } else {
+            return "";
         }
-        //  TODO si no sabes hacer lo anterior descomenta la siguiente línea
-        //file = "users.data";
+    }
+
+    public static void main(String[] args) {
+        String file;
+        if ((file = obtenerNombreDeArchivo(args)).equals("")) {
+            System.out.println("Error, no se ha introducido correctamente el nombre del fichero en el argumento.");
+            System.exit(-1);
+        }
+        
+        // Si no funciona así, poner solo "users.data"
+        // file = "src/users.data";
+
         Scanner sc = new Scanner(System.in);
         try {
             Usuarios usuarios = new Usuarios(file);
