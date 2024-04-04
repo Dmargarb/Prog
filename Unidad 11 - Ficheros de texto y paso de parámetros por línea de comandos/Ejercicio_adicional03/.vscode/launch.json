@@ -15,8 +15,8 @@
             "name": "Authenticator",
             "request": "launch",
             "mainClass": "Authenticator",
-            "projectName": "Ejercicio_adicional03_21a713a5",
-            "args": "src/users.data"
+            "args": "./src/users.data",
+            "projectName": "U11 - Gestión usuarios_6ca3ffc4"
         }
     ]
 }

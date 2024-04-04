@@ -9,149 +9,176 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Usuarios implements CRUD<Usuario> {
+public class Usuarios implements CRUD<Usuario>{
     private String file;
     private int nextId;
-
-    public Usuarios(String file) throws Exception {
-
+    
+    public Usuarios(String file) throws Exception{
         this.file = file;
         this.nextId = 0;
         File _file = new File(file);
-        if (!_file.exists())
+        if(!_file.exists())
             _file.createNewFile();
 
-        // Solicitamos los usuarios que hay
-        ArrayList<Usuario> usuarios = solicitarTodos();
+        // tienes que leer el archivo para obtener el siguiente id disponible...
+        // nextId almacena el siguiente id a configurar para cuando se añada un nuevo usuario
+        // Por ejempo: Si tienes x usuarios y el último es el usuario 8 entonces nextId debe valer 9
+        // Podrías hacer uso de la función solicitarTodos "es solo una sugerencia"
+
+        // Obtenemos todos los usuarios que existen
+        ArrayList<Usuario> listaUsuarios = solicitarTodos();
 
         // Si la lista no está vacía
-        if (usuarios.size()>0) {
-            // Actualizamos el nextId con el correspondiente siguiente
-            // Primero obtenemos el último usuario de lista
-            // Luego obtenemos su id y le sumamos 1 y lo guardamos en nextId
-            this.nextId = usuarios.get(usuarios.size() - 1).getId() + 1;
+        if (listaUsuarios.size()>0) {
+
+            // Se actualiza el nextId con el siguiente disponible
+            this.nextId = listaUsuarios.get(listaUsuarios.size() - 1).getId() + 1;
+    
+        // Si está vacía
         } else {
-            // Sino, es el primero en crearse
             this.nextId = 1;
         }
     }
-
+    
     public String getFile() {
         return file;
     }
 
     @Override
     public ArrayList<Usuario> solicitarTodos() {
+        //  Tienes que devolver un ArrayList conteniendo todos los usuarios del archivo
 
-        // Creamos la lista vacía
-        ArrayList<Usuario> usuarios = new ArrayList<>();
 
-        // Intentamos leer el archivo
+        // Creamos la lista vacía de usuarios
+        ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
+        // Se intenta leer el archivo
         try {
-            // Iniciamos la lectura del archivo
+
+            // Se inicia la lectura del archivo
             BufferedReader br = new BufferedReader(new FileReader(file));
 
             String linea = "";
-            Usuario usuarioNuevo;
+            Usuario nuevoUsuario;
 
-            // Mientras haya líneas que leer, sigue leyendo
+            // Sigue leyendo hasta que no queden líneas por leer
             while ((linea = br.readLine()) != null) {
         
-                // Creamos el usuario con los datos leídos
-                usuarioNuevo = new Usuario(linea);
-                // Añadimos a la lista el usuario creado
-                usuarios.add(usuarioNuevo);
+                // Se crea el usuario con los datos leídos
+                nuevoUsuario = new Usuario(linea);
+                // Se añade a la lista el nuevo usuario creado
+                listaUsuarios.add(nuevoUsuario);
             }
-
-            // Cerramos el buffer
             br.close();
+
         } catch (FileNotFoundException e) {
             System.out.println("No se encuentra el archivo " + file);
         } catch (IOException e) {
             System.out.println("No se puede leer el archivo " + file);
         }
 
-        return usuarios;
+        return listaUsuarios;
     }
 
     @Override
-    public Usuario solicitarUno(int id) {
+    public Usuario solicitarUno(int id){
+        // Tienes que poder buscar en el archivo al usuario cuyo id se suministra
+        // y devolver un objeto Usuario
+        // si el usuario no está debe devolver null
 
-        // Obtenemos la lista
-        ArrayList<Usuario> usuarios = solicitarTodos();
 
-        // Buscamos en la lista
-        for (Usuario u : usuarios) {
-            // Si la id del usuario coincide con la indicada
+        // Obtenemos la lista de usuarios
+        ArrayList<Usuario> listaUsuarios = solicitarTodos();
+
+        // Buscamos en la lista el usuario específico
+        for (Usuario u : listaUsuarios) {
+            // Si la id del usuario coincide con el que se suministra
             if (u.getId() == id) {
-                // Se devuelve ese usuario (el que se buscaba)
+                // Se devuelven los datos del usuario que se busca
                 return u;
             }
         }
 
+        // Se devuelve null si el usuario no existe
         return null;
     }
 
     @Override
     public Usuario anadir(Usuario datos) {
+       // Tienes que poder añadir un usuario al archivo
+       // Debes comprobar que el usuario no existe (no puede haber dos usuarios con el mismo email)
+       // En el caso de que ya existiera debe devolver un null
+       // Si el usuario no existe entonces podemos añadir al usuario
+       // Para que puedas añadir al usuario al final del archivo debes pasar un true cuando llames
+       // al constructor de new FileWriter(nombre, true)
 
-        // Obtenemos la lista de todos los usuarios
-        ArrayList<Usuario> usuarios = solicitarTodos();
 
-        // Buscamos en la lista si ya existe un usuario con el mismo email
-        for (Usuario u : usuarios) {
-            // Si es el mismo email, se devuelve null y no se añade
+        // Obtenemos la lista de usuarios
+        ArrayList<Usuario> listaUsuarios = solicitarTodos();
+
+        // Buscamos en la lista si existe un usuario con el mismo email
+        for (Usuario u : listaUsuarios) {
             if (u.getEmail().equals(datos.getEmail())) {
+                // Si el email es el mismo, devuelve null
                 return null;
             }
         }
 
-        // Establecemos como id del usuario el nextId que hay
+        // Se establece el id del usuario con el nextId
         datos.setId(nextId);
-        // Actualizamos nextId
+        // Se actualiza el nextId
         nextId++;
 
         try {
-            // Iniciamos la escritura en el fichero
+            // Se inicia la escritura en el fichero
             BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-            // Escribimos los datos
             bw.write(datos.serializar());
-            // Bajamos una línea
             bw.newLine();
-            // Cerramos el buffer
             bw.close();
+
         } catch (FileNotFoundException e) {
             System.out.println("No se encuentra el archivo " + file);
         } catch (IOException e) {
             System.out.println("No se puede leer el archivo " + file);
         }
 
-        // Devolvemos el mismo usuario si salió con éxito
+        // Se devuelve el usuario
         return datos;
     }
 
     @Override
-    public Usuario actualizar(int id, Usuario data) {
+    public Usuario actualizar(int id, Usuario data){
+        // Tienes que devolver los datos del usuario actualizados
+        // Devolverá null si el usuario no existe en el fichero (si no se encuentra ese id)
+        // Si el usuario se encuentra en el archivo entonces modificamos ese usuario en esa posición
+        // del archivo.
+        // Ayuda: Tienes que renombrar el archivo original añadiéndole .tmp al final
+        // Luego abres en modo lectura el archivo temporal y abres en modo escritura el archivo original
+        // Vas escribiendo las líneas del archivo temporal y cuando llegues al usaurio que quieres 
+        // modificar escribes los datos de ese usuario
+        // Sigue hasta que consumas todas las líneas del archivo temporal
+        // Al final del proceso debes borrar el archivo temporal
+        // Con esto habrás modificado los datos de ese usuario 
+
 
         // Obtenemos la lista de usuarios
-        ArrayList<Usuario> usuarios = solicitarTodos();
+        ArrayList<Usuario> listaUsuarios = solicitarTodos();
 
-        // Control para dejar de avanzar en el bucle si se actualizó el archivo
+        // Boolean para controlar si se actualizó el archivo
         boolean actualizado = false;
 
-        // Buscamos en la lista
-        for (int i = 0; i < usuarios.size() && !actualizado; i++) {
+        // Bucle de la lista de usuarios
+        for (int i = 0; i < listaUsuarios.size() && !actualizado; i++) {
 
-            // Comparamos el id indicado con el del usuario i de la lista
-            if (usuarios.get(i).getId() == id) {
+            // Se comprueba que coincida el id del usuario
+            if (listaUsuarios.get(i).getId() == id) {
 
-                // Para dejar de iterar después del proceso de actualizar
                 actualizado = true;
 
-                // Actualizamos el id del usuario que vamos a insertar con el de la lista
+                // Se actualiza el id del usuario
                 data.setId(id);
 
-                // Obtenemos el archivo de usuarios y los volvemos temporal
+                // Se crea el archivo de usuarios temporal
                 File temporal = new File(file);
                 temporal.renameTo(new File(file + ".tmp"));
 
@@ -160,30 +187,28 @@ public class Usuarios implements CRUD<Usuario> {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
                     String linea = "";
-                    Usuario usuarioNuevo;
+                    Usuario nuevoUsuario;
 
-                    // Mientras haya líneas que leer, sigue leyendo
+                    // Sigue leyendo hasta que no queden líneas por leer
                     while ((linea = br.readLine()) != null) {
                 
-                        // Creamos el usuario con los datos leídos
-                        usuarioNuevo = new Usuario(linea);
+                        // Se crea el usuario con los datos leídos
+                        nuevoUsuario = new Usuario(linea);
 
-                        // Si es el id del usuario a actualizar, cambiamos a que sea ese el que se va a
-                        // escribir
-                        if (usuarioNuevo.getId() == data.getId()) {
-                            usuarioNuevo = data;
+                        // Con el id, se establece el usuario que se va a actualizar
+                        if (nuevoUsuario.getId() == data.getId()) {
+                            nuevoUsuario = data;
                         }
 
-                        // Escribimos el usuario
-                        bw.write(usuarioNuevo.serializar());
+                        // Se escribe el usuario
+                        bw.write(nuevoUsuario.serializar());
                         bw.newLine();
-
                     }
 
                     br.close();
                     bw.close();
 
-                    // Borramos archivo temporal
+                    // Se borra el archivo temporal
                     (new File(file + ".tmp")).delete();
 
                     return data;
@@ -201,26 +226,35 @@ public class Usuarios implements CRUD<Usuario> {
     }
 
     @Override
-    public Usuario borrar(int id) {
+    public Usuario borrar(int id){
+        // Tienes que devolver los datos del usuario borrado
+        // Devolverá null si el usuario no existe en el fichero (si no se encuentra ese id)
+        // Si el usuario se encuentra en el archivo entonces eliminamos esa línea del archivo
+        // Ayuda: Tienes que renombrar el archivo original añadiéndole .tmp al final
+        // Luego abres en modo lectura el archivo temporal y abres en modo escritura el archivo original
+        // Vas escribiendo las líneas del archivo temporal y cuando llegues al usaurio que quieres 
+        // borrar te saltas la escritura de esa línea
+        // Sigue hasta que consumas todas las líneas del archivo temporal
+        // Al final del proceso debes borrar el archivo temporal
+        // Con esto habrás borrado al usuario
+
 
         // Obtenemos la lista de usuarios
-        ArrayList<Usuario> usuarios = solicitarTodos();
+        ArrayList<Usuario> listaUsuarios = solicitarTodos();
 
-        // Control para dejar de avanzar en el bucle si se actualizó el archivo
+        // Boolean para controlar si se actualizó el archivo
         boolean borrado = false;
 
-        // Buscamos en la lista
-        for (int i = 0; i < usuarios.size() && !borrado; i++) {
+        // Bucle de la lista de usuarios
+        for (int i = 0; i < listaUsuarios.size() && !borrado; i++) {
 
-            // Comparamos el id indicado con el del usuario i de la lista
-            if (usuarios.get(i).getId() == id) {
+            // Se comprueba que coincida el id del usuario
+            if (listaUsuarios.get(i).getId() == id) {
 
-                Usuario usuarioBorrado = usuarios.get(i);
-
-                // Para dejar de iterar después del proceso de actualizar
+                Usuario usuarioBorrado = listaUsuarios.get(i);
                 borrado = true;
 
-                // Obtenemos el archivo de usuarios y los volvemos temporal
+                // Se crea el archivo de usuarios temporal
                 File temporal = new File(file);
                 temporal.renameTo(new File(file + ".tmp"));
 
@@ -231,25 +265,24 @@ public class Usuarios implements CRUD<Usuario> {
                     String linea = "";
                     Usuario usuario;
 
-                    // Mientras haya líneas que leer, sigue leyendo
+                    // Sigue leyendo hasta que no queden líneas por leer
                     while ((linea = br.readLine()) != null) {
                         
-                        // Creamos el usuario con los datos leídos
+                        // Se crea el usuario con los datos leídos
                         usuario = new Usuario(linea);
 
-                        // Si no es el id del usuario a borrar
+                        // Se ignora el usuario con el id especificado
                         if (usuario.getId() != id) {
-                            // Escribimos el usuario
+                            // Se escribe el usuario
                             bw.write(usuario.serializar());
                             bw.newLine();
                         }
-
                     }
 
                     br.close();
                     bw.close();
                     
-                    // Borramos archivo temporal
+                    // Se borra el archivo temporal
                     (new File(file + ".tmp")).delete();
 
                     return usuarioBorrado;
