@@ -1,0 +1,38 @@
+Vehiculos;Rojo;Gigante de 2 Cabezas;Aggro
+Acelador;Blanco/Azul;Gigante de 2 Cabezas;Control
+Vidas;Blanco/Negro;Gigante de 2 Cabezas;Combo
+Blue Fact;Azul;Gigante de 2 Cabezas;Control
+Espoleo;Blanco/Rojo;Independiente;Combo/Aggro
+Dinosaurios;Blanco/Rojo/Verde;Independiente;Tribal
+Caballeros;Blanco/Rojo/Negro;Independiente;Tribal
+Momias;Blanco/Negro;Independiente;Tribal
+Dragones;Blanco/Rojo/Verde;Independiente;Tribal/Combo
+Furius;Rojo/Negro;Tri-Deck;Aggro Control
+Dominus;Rojo/Verde;Tri-Deck;Aggro
+Necro;Verde/Negro;Tri-Deck;Aggro/Combo
+Olimpus;Blanco/Verde/Azul;Independiente;Control/Combo
+Luz;Rojo;Independiente;Aggro
+Wizards;Rojo/Azul;Independiente;Aggro/Tribal
+Haditas;Azul/Negro;Independiente;Tribal
+Tritones;Verde/Azul;Independiente;Aggro/Combo/Tribal
+Piratillas;Rojo/Azul/Negro;Independiente;Tribal/Combo/Aggro
+Vampers;Blanco/Negro;Independiente;Tribal/Combo/Aggro
+Contadores;Blanco/Verde/Negro;Independiente;Combo
+Ciclo;Rojo/Azul/Negro;Independiente;Combo
+Nature;Verde;Pauper;Rampeo
+Azure;Azul/Negro;Pauper;Aggro Control
+Inferno;Rojo;Pauper;Combo
+Blanco;Blanco;Masivo;Aggro Control
+Rojo;Rojo;Masivo;Aggro Control
+Verde;Verde;Masivo;Rampeo
+Azul;Azul;Masivo;Control
+Negro;Negro;Masivo;Control
+Artefactos;Blanco/Rojo/Azul/Negro;Masivo;Tribal/Combo
+Eternal;Rojo/Verde/Azul/Negro;Independiente;Control
+Rateras;Rojo/Negro;Independiente;Tribal/Combo
+Fantasy;Blanco;Pauper;Aggro
+Devoros;Negro;Pauper;Control
+Divyne;Blanco/Rojo;Commander;Aggro/Combo
+Genesis;Verde/Azul;Commander;Aggro/Control
+Legends;Blanco/Rojo/Negro;Commander;Control/Combo
+Zombies!;Negro;Commander;Tribal/Combo
