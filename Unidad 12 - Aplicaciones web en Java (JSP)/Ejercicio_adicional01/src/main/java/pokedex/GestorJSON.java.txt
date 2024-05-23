@@ -1,0 +1,86 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pokedex;
+
+/**
+ *
+ * @author David
+ */
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.ArrayList;
+
+public class GestorJSON {
+
+  private final ArrayList<Pokemon> listaPokemon;
+
+  public GestorJSON() {
+    this.listaPokemon = new ArrayList<>();
+  }
+
+  public void importarJSON(String nombreFichero) {
+    try {
+      JSONParser parser = new JSONParser();
+      Reader reader = new FileReader(nombreFichero);
+      Object jsonObj = parser.parse(reader);
+      JSONObject jsonObject = (JSONObject) jsonObj;
+
+      JSONArray pokemons = (JSONArray) jsonObject.get("pokemon");
+
+      pokemons.forEach(entry -> {
+
+        JSONObject pokemonObject = (JSONObject) entry;
+        
+        String num = (String) pokemonObject.get("num");
+        String name = (String) pokemonObject.get("name");
+        String img = (String) pokemonObject.get("img");
+
+        JSONArray tipos = (JSONArray) pokemonObject.get("type");
+        ArrayList<String> types = new ArrayList<>();
+
+        tipos.forEach(entryType -> {
+          types.add((String) entryType);
+        });
+
+        JSONArray debilidades = (JSONArray) pokemonObject.get("weaknesses");
+        ArrayList<String> weaknesses = new ArrayList<>();
+
+        debilidades.forEach(entryWeaknesses -> {
+          weaknesses.add((String) entryWeaknesses);
+        });
+
+        ArrayList<String> nextEvolutionNames = new ArrayList<>();
+        JSONArray nextEvolutions = (JSONArray) pokemonObject.get("next_evolution");
+        
+        if (nextEvolutions != null){
+          
+          nextEvolutions.forEach(nextEvolutionEntry -> {
+            
+          JSONObject nextEvolutionObject = (JSONObject) nextEvolutionEntry;
+          String nextEvolutionName = (String) nextEvolutionObject.get("name");
+          nextEvolutionNames.add(nextEvolutionName);
+          
+        });
+        }
+        
+        Pokemon pokemon = new Pokemon(num, name, img, types, weaknesses, nextEvolutionNames);
+
+        listaPokemon.add(pokemon);
+      });
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+// Método getter para obtener la lista de Pokémon
+  public ArrayList<Pokemon> getListaPokemon() {
+    return listaPokemon;
+  }
+}

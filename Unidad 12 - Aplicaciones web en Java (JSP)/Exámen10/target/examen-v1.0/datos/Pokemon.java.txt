@@ -1,0 +1,71 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pokedex;
+
+/**
+ *
+ * @author David
+ */
+import java.util.ArrayList;
+
+public class Pokemon {
+
+  private String num;
+  private String name;
+  private String img;
+  private ArrayList<String> types;
+  private ArrayList<String> weaknesses;
+  private ArrayList<String> evoluciones;
+
+  public Pokemon(String num, String name, String img, ArrayList<String> types, ArrayList<String> weaknesses, ArrayList<String> evoluciones) {
+    this.num = num;
+    this.name = name;
+    this.img = img;
+    this.types = types;
+    this.weaknesses = weaknesses;
+    this.evoluciones = evoluciones;
+  }
+
+  // Métodos getters y setters para acceder y modificar los atributos de la clase
+
+  // Getter para el número del Pokémon
+  public String getNum() {
+    return num;
+  }
+
+  // Getter para el nombre del Pokémon
+  public String getName() {
+    return name;
+  }
+
+  // Getter para la URL de la imagen del Pokémon
+  public String getImg() {
+    return img;
+  }
+
+  // Getter para la lista de tipos del Pokémon
+  public ArrayList<String> getTypes() {
+    return types;
+  }
+
+  public ArrayList<String> getWeaknesses() {
+    return weaknesses;
+  }
+  
+    public ArrayList<String> getEvoluciones() {
+    return evoluciones;
+  }
+
+  // Método toString para representar el objeto Pokemon como una cadena de texto
+  @Override
+  public String toString() {
+    return "Pokemon{"
+            + "num='" + num + '\''
+            + ", name='" + name + '\''
+            + ", img='" + img + '\''
+            + ", types=" + types
+            + '}';
+  }
+}

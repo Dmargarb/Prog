@@ -1,0 +1,28 @@
+Necesito crear una lista de pokemon con java JSP, los datos están en .json
+
+con esta estructura: 
+
+
+
+
+Y tengo que hacerlo con este código:
+
+public class GestorJSON {
+
+    private final ArrayList<Pokemon> listaPokemon;
+
+    public GestorJSON() {
+        this.listaPokemon = new ArrayList<>();
+    }
+
+    public void importarJSON(String nombreFichero) {
+        try {
+            JSONParser parser = new JSONParser();
+            Reader reader;
+            reader = new FileReader(nombreFichero);
+            Object jsonObj = parser.parse(reader);
+            JSONObject jsonObject = (JSONObject) jsonObj; 
+
+Por ahora solo necesito mostrar en la WEB: num, name, img, type, y las next_evolution del pokemon. No hace falta todo lo demás. Ten cuidado con next_evolution por NO todos los pokemon tienen este valor y hay que controlarlo.
+
+Dame el código de los archivos GestorJSON.java, Pokemon.java y index.jsp

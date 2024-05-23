@@ -1,0 +1,194 @@
+Necesito crear una lista de videojuegos con java JSP, los datos están en .json
+
+con esta estructura: 
+
+{
+    "20200": {
+        "name": "Galactic Bowling",
+        "release_date": "Oct 21, 2008",
+        "required_age": 0,
+        "price": 19.99,
+        "dlc_count": 0,
+        "detailed_description": "Galactic Bowling is an exaggerated and stylized bowling game with an intergalactic twist. Players will engage in fast-paced single and multi-player competition while being submerged in a unique new universe filled with over-the-top humor, wild characters, unique levels, and addictive game play. The title is aimed at players of all ages and skill sets. Through accessible and intuitive controls and game-play, Galactic Bowling allows you to jump right into the action. A single-player campaign and online play allow you to work your way up the ranks of the Galactic Bowling League! Whether you have hours to play or only a few minutes, Galactic Bowling is a fast paced and entertaining experience that will leave you wanting more! Full Single-player story campaign including 11 Characters and Environments. 2 Single-player play modes including Regular and Battle Modes. Head to Head Online Multiplayer play Modes. Super Powers, Special Balls, and Whammies. Unlockable Characters, Environments, and Minigames. Unlock all 30 Steam Achievements! ",
+        "about_the_game": "Galactic Bowling is an exaggerated and stylized bowling game with an intergalactic twist. Players will engage in fast-paced single and multi-player competition while being submerged in a unique new universe filled with over-the-top humor, wild characters, unique levels, and addictive game play. The title is aimed at players of all ages and skill sets. Through accessible and intuitive controls and game-play, Galactic Bowling allows you to jump right into the action. A single-player campaign and online play allow you to work your way up the ranks of the Galactic Bowling League! Whether you have hours to play or only a few minutes, Galactic Bowling is a fast paced and entertaining experience that will leave you wanting more! Full Single-player story campaign including 11 Characters and Environments. 2 Single-player play modes including Regular and Battle Modes. Head to Head Online Multiplayer play Modes. Super Powers, Special Balls, and Whammies. Unlockable Characters, Environments, and Minigames. Unlock all 30 Steam Achievements! ",
+        "short_description": "Galactic Bowling is an exaggerated and stylized bowling game with an intergalactic twist. Players will engage in fast-paced single and multi-player competition while being submerged in a unique new universe filled with over-the-top humor, wild characters, unique levels, and addictive game play.",
+        "reviews": "",
+        "header_image": "https://cdn.akamai.steamstatic.com/steam/apps/20200/header.jpg?t=1640121033",
+        "website": "http://www.galacticbowling.net",
+        "support_url": "",
+        "support_email": "",
+        "windows": true,
+        "mac": false,
+        "linux": false,
+        "metacritic_score": 0,
+        "metacritic_url": "",
+        "achievements": 30,
+        "recommendations": 0,
+        "notes": "",
+        "supported_languages": [
+            "English"
+        ],
+        "full_audio_languages": [],
+        "packages": [
+            {
+                "title": "Buy Galactic Bowling",
+                "description": "",
+                "subs": [
+                    {
+                        "text": "Galactic Bowling - $19.99",
+                        "description": "",
+                        "price": 19.99
+                    }
+                ]
+            }
+        ],
+        "developers": [
+            "Perpetual FX Creative"
+        ],
+        "publishers": [
+            "Perpetual FX Creative"
+        ],
+        "categories": [
+            "Single-player",
+            "Multi-player",
+            "Steam Achievements",
+            "Partial Controller Support"
+        ],
+        "genres": [
+            "Casual",
+            "Indie",
+            "Sports"
+        ],
+        "screenshots": [
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005994.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005993.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005992.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000006011.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005685.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005686.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005995.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005688.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005689.1920x1080.jpg?t=1640121033",
+            "https://cdn.akamai.steamstatic.com/steam/apps/20200/0000005690.1920x1080.jpg?t=1640121033"
+        ],
+        "movies": [
+            "http://cdn.akamai.steamstatic.com/steam/apps/256863704/movie_max.mp4?t=1638854607"
+        ],
+        "user_score": 0,
+        "score_rank": "",
+        "positive": 6,
+        "negative": 11,
+        "estimated_owners": "0 - 20000",
+        "average_playtime_forever": 0,
+        "average_playtime_2weeks": 0,
+        "median_playtime_forever": 0,
+        "median_playtime_2weeks": 0,
+        "peak_ccu": 0,
+        "tags": {
+            "Indie": 22,
+            "Casual": 21,
+            "Sports": 21,
+            "Bowling": 6
+        }
+    },
+
+
+Y tengo que hacerlo con este código:
+
+public class GestorJSON {
+
+    private final ArrayList<Videojuego> listaVideojuegos;
+
+    public GestorJSON() {
+        this.listaVideojuegos = new ArrayList<>();
+    }
+
+    @SuppressWarnings("unchecked")
+    public void importarJSON(String nombreFichero, String cadenaBusqueda) {
+        try {
+            JSONParser parser = new JSONParser();
+            Reader reader;
+            reader = new FileReader(nombreFichero);
+            Object jsonObj = parser.parse(reader);
+            JSONObject jsonObject = (JSONObject) jsonObj; 
+
+            // Leemos el conjunto de videojuegos
+            Map<Object, Object> videojuegos = (Map<Object, Object>) jsonObject;
+            
+            // TODO recorrer el mapa, crear un JSONObject por cada valor y recuperar de él los campos deseados
+            
+            // TODO Si cadenaBusqueda es null añadimos al ArrayList todos los videojuegos
+            // En otro caso, los añadimos solo si cadenaBusqueda se encuentra contenida en el nombre o la descripción
+
+            // Cerramos el lector
+            reader.close();
+        } catch (IOException | ParseException ex) {
+            System.out.println(ex);
+            
+        }
+    }
+
+    public ArrayList<Videojuego> getListaVideojuegos() {
+        return listaVideojuegos;
+    }
+}
+
+Por ahora solo necesito mostrar en la WEB: 'name', 'header_image' y 'short_description'.
+
+Tienes que hacer los 'TODO'
+
+
+package gestorvideojuegos;
+
+/**
+ *
+ * @author @date Apr 24, 2024, 5:06:10 PM
+ */
+public class Videojuego {
+
+  private final String nombre;
+  private final String descripción;
+  private final String imagen;
+
+  public Videojuego(String nombre, String descripción, String imagen) {
+    this.nombre = nombre;
+    this.descripción = descripción;
+    this.imagen = imagen;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public String getDescripción() {
+    return descripción;
+  }
+
+  public String getImagen() {
+    return imagen;
+  }
+
+  @Override
+  public String toString() {
+    // TODO devuelve una cadena con etiquetas HTML
+  }
+
+}
+
+Haz el método toString()
+
+org.glassfish.wasp.WaspException: PWC6033: Error in Javac compilation for JSP
+
+PWC6199: Generated servlet error:
+'catch' without 'try'
+
+PWC6199: Generated servlet error:
+'finally' without 'try'
+
+PWC6199: Generated servlet error:
+'try' without 'catch', 'finally' or resource declarations
+
+PWC6199: Generated servlet error:
+reached end of file while parsing
+
+que es este error

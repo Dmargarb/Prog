@@ -1,0 +1,801 @@
+- Comentarios: 		//
+- Salto de línea: 	\n
+- Símbolos: 		\u266A  (código en el estándar Unicode) (En hexadecimal)
+-------------------------------------------------------------------------------------------------------------
+OPERADOR 		NOMBRE 				EJEMPLO 		DESCRIPCIÓN
+
+== 			igual 				a == b 			a es igual a b
+!= 			distinto 			a != b 			a es distinto de b
+< 			menor que 			a < b 			a es menor que b
+> 			mayor que 			a > b 			a es mayor que b
+<= 			menor o igual que 		a < = b 		a es menor o igual que b
+>= 			mayor o igual que 		a > = b 		a es mayor o igual que b
+-------------------------------------------------------------------------------------------------------------
+OPERADOR 		NOMBRE 				EJEMPLO 		DEVUELVE
+										VERDADERO
+										CUANDO…
+
+&& 			y 				(7 > 2) && (2 < 4) 	las dos condiciones
+										son verdaderas
+|| 			o 				(7 > 2) || (2 < 4) 	al menos una de las
+										condiciones es
+										verdadera
+! 			no 				!(7 > 2) 		la condición es falsa
+-------------------------------------------------------------------------------------------------------------
+- .equals(x) --> igual a
+
+- Aplicar IVA --> iva = precioSinIVA * 0.04; // IVA al 4%
+                  iva = precioSinIVA * 0.1;  // IVA al 10%.
+
+- Aplicar Descuento --> descuento = precioSinIVA * 0.2; // 20% de descuento.
+
+- Aplicar oferta de 3x2 --> cantidadConOferta = (cantidad - cantidad / 3); // oferta de 3x2.
+
+- El 110% o más de una cantidad --> precioSinIVA * 1.10; // 110%. (10*1,10=11) (11-10=1)
+-------------------------------------------------------------------------------------------------------------
+- Salida de texto:
+
+sout
+
+System.out.println("Texto");
+
+System.out.println("CÁLCULO DE ÁREAS");
+System.out.println("----------------");
+System.out.println("1. Cuadrado");
+System.out.println("2. Rectángulo");
+System.out.println("3. Triángulo");
+System.out.print("\nElija una opción (1-3): ");
+-------------------------------------------------------------------------------------------------------------
+- Colores:
+
+NEGRO 	   =   \033[0;30m    // BLACK
+ROJO 	   =   \033[0;31m    // RED
+VERDE 	   =   \033[0;32m    // GREEN
+AMARILLO   =   \033[0;33m    // YELLOW
+AZUL       =   \033[0;34m    // BLUE
+PÚRPURA    =   \033[0;35m    // PURPLE
+CIAN       =   \033[0;36m    // CYAN
+BLANCO     =   \033[0;37m    // WHITE
+
+Por defecto:
+
+System.out.print ("\033[0m");
+System.out.println ("");
+-------------------------------------------------------------------------------------------------------------
+- Salida de texto formateada:
+
+System.out.println(" Artículo Precio/caja Nº cajas");
+System.out.println("-----------------------------------------");
+System.out.printf("%-10s %8.2f %6d\n", "manzanas", 4.5, 10);
+System.out.printf("%-10s %8.2f %6d\n", "peras", 2.75, 120);
+System.out.printf("%-10s %8.2f %6d\n", "aguacates", 10.0, 6);
+
+%d     -> Números enteros 
+%f     -> Números que contienen decimales
+%.3f   -> Números que contienen exactamente 3 decimales
+%s     -> Cadena de caracteres
+%-10s  -> Reserva 10 caracteres, alinear a la izquierda
+%10s   -> Alinear a la derecha
+%8.2f  -> Reserva 8 caracteres y se muestran exactamente 2 decimales
+%6d    -> Número entero colocado en un hueco de 6 posiciones
+
+En una cadena formateada se pueden incluir tabuladores con el carácter \t, comillas
+simples con \', comillas dobles con \" o icluso la propia barra inclinada con \\.
+-------------------------------------------------------------------------------------------------------------
+- Scanner:
+
+import java.util.Scanner;
+Scanner s = new Scanner(System.in);
+
+int x = s.nextInt();
+double x = s.nextDouble();
+String frase = s.nextLine();
+
+s.close();
+-------------------------------------------------------------------------------------------------------------
+- Leer:
+
+String x = System.console().readLine();
+int x = Integer.parseInt(System.console().readLine());
+double x = Double.parseDouble(System.console().readLine());
+-------------------------------------------------------------------------------------------------------------
+- Convierte a minúsculas:
+
+frase = frase.toLowerCase();
+-------------------------------------------------------------------------------------------------------------
+- Sentencia if:
+
+if (x == 0) {
+  System.out.println("Texto");
+} else {
+  System.out.println("Texto");
+}
+
+
+if ((x) && (x)) {
+  System.out.println("Texto");
+} else if ((x) && (x) && (x)) {
+  System.out.println("Texto");
+} else if ((x) && (x)) {
+} else {
+  System.out.println("Texto");
+}
+-------------------------------------------------------------------------------------------------------------
+- Sentencia switch:
+
+    switch (x) {
+      case "x1":
+        System.out.println("Texto");
+        break;
+      case "x2":
+        System.out.println("Texto");
+        break;
+      default:
+        System.out.println("Texto");
+-------------------------------------------------------------------------------------------------------------
+- Elevar potencias: 
+
+double x = Math.pow(numero, elevado);
+-------------------------------------------------------------------------------------------------------------
+- Raíz cuadrada:
+
+double x = Math.sqrt(numero);
+-------------------------------------------------------------------------------------------------------------
+- Bucle for:
+
+for (int i = 1; i < 11; i++) {
+  System.out.println(i);
+}
+-------------------------------------------------------------------------------------------------------------
+- Bucle while
+
+int i = 1;
+
+while (i < 11) {
+  System.out.println(i);
+  i++;
+}
+-------------------------------------------------------------------------------------------------------------
+- Bucle do-while
+
+int i = 1;
+
+do {
+  System.out.println(i);
+  i++;
+} while (i < 11);
+-------------------------------------------------------------------------------------------------------------
+- Números aleatorios
+
+int numeroAleatorio = (int)(Math.random() * (max - min) + min); -> (0-9)
+int numeroAleatorio = (int)(Math.random() * ((max - min) +1) + min); -> (0-10)
+
+    System.out.println("20 números aleatorios entre 50 y 60 (sin decimales):");
+    for (int i = 1; i <= 20; i++) {
+      System.out.print(((int) (Math.random() * 11) + 50) + " ");
+    }
+    System.out.println();
+-------------------------------------------------------------------------------------------------------------
+- Palabras aleatorias
+
+    System.out.println("Muestra un día de la semana al azar:");
+    int dia = (int) (Math.random() * 7) + 1; // genera un número aleatorio
+    // entre el 1 y el 7
+    switch (dia) {
+      case 1:
+        System.out.println("lunes");
+        break;
+      case 2:
+        System.out.println("martes");
+        break;
+      default:
+    }
+-------------------------------------------------------------------------------------------------------------
+- Operador ternario
+
+condicion ? valor_si_verdadero : valor_si_falso
+
+      System.out.print(x == a ? b : c);
+-------------------------------------------------------------------------------------------------------------
+- Array
+
+int[] x = {8, 33, 200, 150, 11};
+
+--------------------------------
+
+int[] num = new int[10];
+
+num[0] = 8;
+num[1] = 33;
+num[2] = 200;
+num[3] = 150;
+num[4] = 11;
+num[5] = 88;
+num[6] = num[2] * 10;
+num[7] = num[2] / 10;
+num[8] = num[0] + num[1] + num[2];
+num[9] = num[8];
+
+System.out.println("El array num contiene los siguientes elementos:");
+
+for (int i = 0; i < 10; i++) {
+System.out.println(num[i]);
+
+}
+
+--------------------------------
+
+nombre_array.length -> fila
+nombre_array[0].length -> columnas
+
+for(int nombre:nombre_array){
+	 
+}
+
+--------------------------------
+
+int[][] n = new int[3][2]; // array de 3 filas por 2 columnas
+
+        int max = 6;
+        int min = 1;
+        int filas = 10;
+        int columnas = 10;
+
+        int[][] arrayBi = bidimencional.generaArrayBiInt(filas, columnas, min, max);
+
+        for(int i = 0; i < filas; i++) {
+            for(int j = 0; j < columnas; j++) {
+              System.out.print(arrayBi[i][j]+" ");
+            }
+            System.out.println("");
+          }
+
+--------------------------------
+
++ Desplazar array un lugar a la derecha: 
+
+    int[] numeros = new int[15];
+    System.out.println("\nArray Rotado: ");
+
+    int temporal = numeros[14];
+    for (i = 14; i > 0; i--) {
+      numeros[i] = numeros[i - 1];
+    }
+    numeros[0] = temporal;
+
+    for (i = 0; i < 15; i++) {
+      System.out.print(numeros[i] + " ");
+    }
+-------------------------------------------------------------------------------------------------------------
+- Funciones
+
+public static tipoVariable (void si no devuelve) nombreFuncion (int x, int y) {
+    // Cuerpo de la función
+    // Procesamiento y cálculos
+    return valorRetorno;
+}
+-------------------------------------------------------------------------------------------------------------
+- Comentarios
+
+/**
+* Dice si un número es o no es primo usando una función
+*
+* @author David Martín García
+*/
+
+/**
+* Comprueba si un número entero positivo es primo o no.
+* Un número es primo cuando únicamente es divisible entre
+* él mismo y la unidad.
+*
+* @param x un número entero positivo
+* @return <code>true</code> si el número es primo
+* @return <code>false</code> en caso contrario
+*/
+
+/**
+ *
+ * Definición de la clase Libro
+ * 
+ * @author David Martín García
+ */
+-------------------------------------------------------------------------------------------------------------
+- Control de excepciones:
+
+try {
+
+
+
+} catch (Exception e) {
+
+
+
+}
+-------------------------------------------------------------------------------------------------------------
+- POO:
+
++ Atributos:
+
+private String codigoISBN;
+private String titulo;
+private int añoDePublicacion;
+
++ constructor:
+
+public Publicacion(String isbn, String titulo, int año) {
+        this.codigoISBN = isbn;
+        this.titulo = titulo;
+        this.añoDePublicacion = año;
+    }
+-------------------------------------------------------------------
++ getter:
+
+int getCapacidad() {
+    return this.capacidad;
+}
+-------------------------------------------------------------------
++ setter:
+
+void setContenido(int litros) {
+    this.contenido = litros;
+}
+-------------------------------------------------------------------
++ toString:
+
+public String toString() {
+        return "ISBN: " + codigoISBN + ", título: "
++ titulo + ", año de publicación: " + añoDePublicacion;
+    }
+-------------------------------------------------------------------
++ Visibilidad:
+
+public (público)
+protected (protegido)
+private (privado)
+-------------------------------------------------------------------
++ Enumerado:
+
+public enum Sexo {
+    MACHO, HEMBRA, HERMAFRODITA
+}
+-------------------------------------------------------------------
++ Herencia:
+
+(public class X extends X)
+
+public Libro(String isbn, String titulo, int año) {
+        super(isbn, titulo, año);
+    }
+-------------------------------------------------------------------
++ Clase abstracta
+
+(public abstract class X)
+-------------------------------------------------------------------
++ Sobrecarga de métodos:
+
+@Override
+    public void presta() {
+        if (this.prestado) {
+            System.out.println("Lo siento, no se puede");
+        } else {
+            this.prestado = true;
+        }
+    }
+-------------------------------------------------------------------
++ Clase estática
+
+private static int kilometrajeTotal = 0;
+
+public static int getKilometrajeTotal() {
+        return Coche.kilometrajeTotal;
+    }
+-------------------------------------------------------------------
++ Interfaces
+
+public interface Prestable {
+    public void presta();
+    public void devuelve();
+    public boolean estaPrestado();
+}
+-------------------------------------------------------------------
++ Arrays de objetos:
+
+Alumno[] alum = new Alumno[5];
+
+for (int i = 0; i < alum.length; i++) {
+
+ alum[i] = new Alumno();
+
+ System.out.println("Alumno " + i);
+
+ System.out.print("Nombre: ");
+ nombreIntroducido = System.console().readLine();
+ (alum[i]).setNombre(nombreIntroducido);
+
+ System.out.print("Nota media: ");
+ notaIntroducida = Double.parseDouble(System.console().readLine());
+ alum[i].setNotaMedia(notaIntroducida);
+}
+-------------------------------------------------------------------------------------------------------------
+- ArrayList:
+
+import java.util.ArrayList;
+
+ArrayList<String> x = new ArrayList<String>();
+ArrayList<Integer> x = new ArrayList<Integer>();
+ArrayList<Gatitos> x = new ArrayList<Gatitos>();
+
+for (String nombre : nombres) {
+    System.out.println(nombre);
+}
+
++ add(elemento): Añade un elemento al final de la lista.
+
++ add(indice, elemento): Inserta un elemento en una posición determinada, 
+desplazando el resto de elementos hacia la derecha.
+
++ clear(): Elimina todos los elementos pero no borra la lista.
+
++ contains(elemento): Devuelve true si la lista contiene el elemento que se especifica 
+y false en caso contrario.
+
++ get(indice): Devuelve el elemento de la posición que se indica entre paréntesis.
+
++ indexOf(elemento): Devuelve la posición de la primera ocurrencia del elemento que se indica 
+entre paréntesis.
+
++ isEmpty(): Devuelve true si la lista está vacía y false en caso de tener algún elemento.
+
++ remove(indice): Elimina el elemento que se encuentra en una posición determinada.
+
++ remove(elemento): Elimina la primera ocurrencia de un elemento.
+
++ removeIf(filtro): Elimina los elementos que cumplen una determinada condición.
+
++ set(indice, elemento): Machaca el elemento que se encuentra en una determinada posición con el
+elemento que se pasa como parámetro.
+
++ size(): Devuelve el tamaño (número de elementos) de la lista.
+
++ toArray(): Devuelve un array con todos y cada uno de los elementos que contiene la lista.
+-------------------------------------------------------------------
+- Ordenación de un ArrayList:
+
+import java.util.Collections;
+
+Collections.sort(lista);
+
+(implements Comparable)
+
+public int compareTo(Gato g) {
+  return (this.nombre).compareTo(g.getNombre());
+}
+-------------------------------------------------------------------
+- HashMap:
+
++ get(clave): Obtiene el valor correspondiente a una clave. Devuelve null si no existe esa 
+clave en el diccionario.
+
++ put(clave, valor): Añade un par (clave, valor) al diccionario. Si ya había un valor para esa 
+clave, se machaca.
+
++ keySet(): Devuelve un conjunto (set) con todas las claves.
+
++ values(): Devuelve una colección con todos los valores (los valores pueden estar duplicados
+a diferencia de las claves).
+
++ entrySet(): Devuelve una colección con todos los pares (clave, valor).
+
++ containsKey(clave): Devuelve true si el diccionario contiene la clave indicada y false en 
+caso contrario.
+
++ getKey(): Devuelve la clave de la entrada. Se aplica a una sola entrada del diccionario (no
+al diccionario completo), es decir a una pareja (clave, valor).
+
+  Por ejemplo:
+
+  for (Map.Entry pareja: m.entrySet()) {
+    System.out.println(pareja.getKey());
+  }
+
++ getValue(): Devuelve el contenido de la entrada. Se aplica a una entrada del diccionario (no
+al diccionario completo), es decir a una pareja (clave, valor).
+
+  Por ejemplo:
+
+  for (Map.Entry pareja: m.entrySet()) {
+    System.out.println(pareja.getValue());
+  }
+-------------------------------------------------------------------
+import java.util.HashMap;
+
+En el siguiente ejemplo definimos el diccionario m que tendrá como clave un número
+entero y una cadena de caracteres como valor:
+
+HashMap<Integer, String> m = new HashMap<Integer, String>();
+-------------------------------------------------------------------------------------------------------------
+- Lectura de un fichero de texto:
+
+"C:\Users\Luma\Documents\Grado\Entornos de desarrollo\Prog\lib\primos.dat"
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+    try {
+      BufferedReader br = new BufferedReader(new FileReader("malaga.txt"));
+
+      String linea = "";
+
+      while (linea != null) {
+        System.out.println(linea);
+        linea = br.readLine();
+      }
+
+      br.close();
+
+    } catch (FileNotFoundException fnfe) { // qué hacer si no se encuentra el fichero
+
+      System.out.println("No se encuentra el fichero malaga.txt");
+
+    } catch (IOException ioe) { // qué hacer si hay un error en la lectura del fichero
+
+      System.out.println("No se puede leer el fichero malaga.txt");
+
+    }
+-------------------------------------------------------------------
+- Escritura sobre un fichero de texto:
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+    try {
+      BufferedWriter bw = new BufferedWriter(new FileWriter("fruta.txt"));
+
+      bw.write("naranja\n");
+      bw.write("mango\n");
+      bw.write("chirimoya\n");
+
+      bw.close();
+
+    } catch (IOException ioe) {
+      System.out.println("No se ha podido escribir en el fichero");
+    }
+-------------------------------------------------------------------
+- Lectura y escritura combinadas:
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+      BufferedReader br1 = new BufferedReader(new FileReader("fichero1.txt"));
+      BufferedReader br2 = new BufferedReader(new FileReader("fichero2.txt"));
+      BufferedWriter bw = new BufferedWriter(new FileWriter("mezcla.txt"));
+    
+      String linea1 = "";
+      String linea2 = "";
+      
+      while ( (linea1 != null) || (linea2 != null) ) {
+        linea1 = br1.readLine();
+        linea2 = br2.readLine();
+        if (linea1 != null) {
+          bw.write(linea1 + "\n");
+        }
+        if (linea2 != null) {
+          bw.write(linea2 + "\n");
+        }
+      } 
+    
+      br1.close();
+      br2.close();
+      bw.close();
+    
+      System.out.println("Archivo mezcla.txt creado satisfactoriamente.");
+
+    } catch (IOException ioe) {
+      System.out.println("Se ha producido un error de lectura/escritura");
+      System.err.println(ioe.getMessage());
+    }
+-------------------------------------------------------------------
+- Otras operaciones sobre ficheros:
+
++ Listado con todos los archivos:
+
+import java.io.File;
+
+    File f = new File("."); // se indica la ruta entre comillas
+    // el punto (.) es el directorio actual
+
+    String[] listaArchivos = f.list();
+    for (String nombreArchivo : listaArchivos) {
+      System.out.println(nombreArchivo);
+    }
+
+
++ Eliminar un archivo:
+
+import java.io.File;
+
+    System.out.print("Introduzca el nombre del archivo que desea borrar: ");
+    String nombreFichero = System.console().readLine();
+
+    File fichero = new File(nombreFichero);
+
+    if (fichero.exists()) {
+      fichero.delete();
+      System.out.println("El fichero se ha borrado correctamente.");
+    } else {
+      System.out.println("El fichero " + nombreFichero + " no existe.");
+    }
+-------------------------------------------------------------------
+- Paso de argumentos por línea de comandos:
+
+    System.out.println("Los argumentos introducidos son: ");
+    for (int i = 0; i < args.length; i++) {
+      System.out.println(args[i]);
+    }
+
+
++ Sumar todos los argumentos:
+
+    int suma = 0;
+
+    for (int i = 0; i < args.length; i++) {
+      suma += Integer.parseInt(args[i]);
+    }
+
+    System.out.println(suma);
+
+
++ Convertir el tipo de dato:
+
+Integer.parseInt()
+Double.parseDouble()
+-------------------------------------------------------------------
+- Combinación de ficheros y paso de argumentos:
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+    try {
+      BufferedReader bf = new BufferedReader(new FileReader(args[0]));
+
+      String linea = "0";
+      int i = 0;
+      double suma = 0;
+
+      while (linea != null) {
+        i++;
+        suma += Double.parseDouble(linea);
+        linea = bf.readLine();
+      }
+      i--;
+
+      bf.close();
+
+      System.out.println("La media es " + suma / (double) i);
+
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
+    }
+-------------------------------------------------------------------
+- Procesamiento de archivos de texto:
+
+• charAt(int n) --> Devuelve el carácter que está en la posición n-ésima de la cadena.
+		    Recuerda que la primera posición es la número 0.
+
+• indexOf(String palabra) --> Devuelve un número que indica la posición en la que
+                              comienza una palabra determinada.
+
+• length() --> Devuelve la longitud de la cadena.
+
+• replace(char c1, char c2) --> Devuelve una cadena en la que se han cambiado todas las ocurrencias 
+				del carácter c1 por el carácter c2.
+
+• substring(int inicio,int fin) --> Devuelve una subcadena.
+
+• toLowerCase() --> Convierte todas las letras en minúsculas.
+
+• toUpperCase() --> Convierte todas las letras en mayúsculas.
+
+"args": ["arg1", "arg2", "arg3"]
+"args": "src/users.data"
+"args": "./src/users.data",
+-------------------------------------------------------------------------------------------------------------
+- JSP:
+
++ Se delimita mediante las etiquetas <% y %>.
++ Se genera código HTML mediante las instrucciones out.print y out.println.
+
+<% %> (Scriptlet) -> Se utilizan para ejecutar bloques de código Java.
+
+<%= %> (Expression) -> Se utilizan para evaluar expresiones y escribir su resultado 
+                       directamente en la salida HTML generada.
+
+<% out.println("<h1>¡Hola Mundo!</h1>"); %>
+
+System.getProperty(propiedad)
+<% out.print(request.getParameter("nombre")); %>
+
+out.print("<img src=\"" + nombreImagen +"\" width=\"20%\">");
+
+
+Integer.parseInt
+Double.parseDouble
+Integer.valueOf
+
++ Tabla:
+
+        <h1>Ejemplo de tabla</h1>
+        <table border="2">
+            <tr>
+                <td>Número</td><td>Cuadrado</td>
+            </tr>
+            <%
+            for(int i = 0; i < 10; i++) {
+            out.println("<tr>");
+            out.println("<td>" + i + "</td>");
+            out.println("<td>");
+            out.println(i * i);
+            out.println("</td></tr>");
+            }
+            %>
+        </table>
+-------------------------------------------------------------------
++ Recogida de datos:
+
+---------------------------------------
+        <form method="post" action="incrementa5.jsp">
+            Introduzca un número (puede tener decimales):
+            <input type="text" name="numeroIntro">
+            <input type="submit" value="OK">
+        </form>
+
+---------------
+
+        El número introducido más cinco es
+        <%
+        double resultado;
+        resultado = Double.parseDouble(request.getParameter("numeroIntro")) + 5;
+        out.print(resultado);
+        %>
+---------------------------------------
+        <h1>Supercalculadora</h1>
+        <form method="post" action="suma.jsp">
+            x <input type="text" name="x"/></br>
+            y <input type="text" name="y"/></br>
+            <input type="submit">
+        </form>
+
+---------------
+
+        La suma es
+        <%
+        int primerNumero = Integer.valueOf(request.getParameter("x"));
+        int segundoNumero = Integer.valueOf(request.getParameter("y"));
+        out.println(primerNumero + segundoNumero);
+        %>
+-------------------------------------------------------------------
++ POO en JSP:
+
+<%@page import="dam1.Gato"%>
+
+<link rel="stylesheet" type="text/css" href="estilos.css" />
+
+
+
+
+
+forEach
+
+
+
+
+
+
+

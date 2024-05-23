@@ -1,0 +1,84 @@
+¿Se puede haceer de esta forma también no?
+
+En el primer archivo:
+
+        <form method="post" action="incrementa5.jsp">
+            Introduzca un número (puede tener decimales):
+            <input type="text" name="numeroIntro">
+            <input type="submit" value="OK">
+        </form>
+
+En el segundo archivo:
+
+        El número introducido más cinco es
+        <%
+        double resultado;
+        resultado = Double.parseDouble(request.getParameter("numeroIntro")) + 5;
+        out.print(resultado);
+        %>
+
+
+import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        // Supongamos que tienes un JSONObject llamado jsonObject
+        JSONObject jsonObject = new JSONObject("{\"Dirección\":{\"Calle\":\"123 Main St\",\"Ciudad\":\"Ciudad Ejemplo\",\"País\":\"País Ejemplo\"}}");
+
+        // Obtener el objeto JSON de la dirección
+        JSONObject direccionJSON = jsonObject.getJSONObject("Dirección");
+
+        // Crear un HashMap para almacenar la dirección
+        Map<Object, Object> direccion = new HashMap<>();
+
+        // Obtener las claves del objeto JSON
+        String[] keys = JSONObject.getNames(direccionJSON);
+
+        // Iterar sobre las claves y agregarlas al HashMap
+        if (keys != null) {
+            for (String key : keys) {
+                direccion.put(key, direccionJSON.get(key));
+            }
+        }
+
+        // Mostrar la dirección
+        System.out.println("Contenido de la dirección:");
+        direccion.forEach((clave, valor) -> System.out.println(clave + ": " + valor));
+    }
+}
+
+
+String nombre = jsonObject.get("nombre").toString();
+
+
+
+
+import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        // Supongamos que tienes un JSONObject llamado jsonObject
+        JSONObject jsonObject = new JSONObject("{\"nombre\":\"Juan\",\"edad\":30,\"ciudad\":\"Ciudad Ejemplo\"}");
+
+        // Obtener las claves del objeto JSON
+        String[] keys = JSONObject.getNames(jsonObject);
+
+        // Crear un HashMap para almacenar los datos
+        Map<String, Object> datos = new HashMap<>();
+
+        // Iterar sobre las claves y agregarlas al HashMap junto con sus valores
+        if (keys != null) {
+            for (String key : keys) {
+                datos.put(key, jsonObject.get(key));
+            }
+        }
+
+        // Mostrar los datos almacenados en el Map
+        System.out.println("Contenido del Map:");
+        datos.forEach((clave, valor) -> System.out.println(clave + ": " + valor));
+    }
+}
