@@ -22,7 +22,7 @@ public class Cifras {
   public static boolean contieneCifra(long numeroIntroducido, int cifra) {
     // Verificar cada dígito del número
     while (numeroIntroducido != 0) {
-      long digito = numeroIntroducido % 10; // Obtener el último dígito
+      int digito = (int) numeroIntroducido % 10; // Obtener el último dígito
       if (digito == cifra) {
         return true; // Se encontró la cifra en el número
       }

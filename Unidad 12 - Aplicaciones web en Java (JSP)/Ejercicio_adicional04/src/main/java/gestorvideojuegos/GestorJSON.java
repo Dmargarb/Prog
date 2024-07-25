@@ -35,9 +35,8 @@ public class GestorJSON {
       // recorrer el mapa, crear un JSONObject por cada valor y recuperar de él los campos deseados
       // Si cadenaBusqueda es null añadimos al ArrayList todos los videojuegos
       // En otro caso, los añadimos solo si cadenaBusqueda se encuentra contenida en el nombre o la descripción
-      for (Map.Entry<Object, Object> entry : videojuegos.entrySet()) {
-
-        JSONObject juego = (JSONObject) entry.getValue();
+      videojuegos.forEach((key, value) -> {
+        JSONObject juego = (JSONObject) value;
 
         String name = (String) juego.get("name");
         String img = (String) juego.get("header_image");
@@ -47,7 +46,7 @@ public class GestorJSON {
           Videojuego videojuego = new Videojuego(name, img, desc);
           listaVideojuegos.add(videojuego);
         }
-      }
+      });
 
       // Cerramos el lector
       reader.close();

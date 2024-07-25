@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author David Martín García
  */
 
-public class PruebaDiccionario {
+public class PruebaDiccionarios {
     public static void main(String[] args) throws Exception {
 
         Diccionario diccionario = new Diccionario();
